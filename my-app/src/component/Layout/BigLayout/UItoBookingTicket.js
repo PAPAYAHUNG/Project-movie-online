@@ -2,12 +2,13 @@ import Item from 'antd/lib/list/Item'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useParams } from 'react-router-dom'
-import { BookingTicket, getHistoryUser, getListShownFilms } from '../../../redux/action/ManagerAction'
+import { BookingTicket, getHistoryUser, getListShownFilms, updateSeatRealTime } from '../../../redux/action/ManagerAction'
 import { BOOKING_TICKET, CHANGE_TAB_ACTIVE } from '../../../redux/types/type-constant'
 import _ from 'lodash'
 import { UserOutlined } from '@ant-design/icons';
 import { Tabs } from 'antd';
 import moment from 'moment'
+import { connection } from '../../..'
 
 export default function UItoBookingTicket(props) {
     let dispatch = useDispatch()
@@ -34,6 +35,17 @@ export default function UItoBookingTicket(props) {
         dispatch(getListShownFilms(idTranfer))
         dispatch(getHistoryUser(userinfo.taiKhoan))
 
+        //When 1st coming to the page load all seat of server
+        connection.on('loadDanhSachGhe',(maLichChieu)=>{
+            console.log("loadDanhSachGhe",maLichChieu)
+        })
+        //Load list seat being book by others from server-Always listen to server if any action from other users
+        connection.on("loadDanhSachGheDaDat", (dsGheKhachDat) => {
+            console.log('danhSachGheKhachDat',dsGheKhachDat);
+            
+            
+         })
+
     }, [])
     const { TabPane } = Tabs;
 
@@ -45,8 +57,9 @@ export default function UItoBookingTicket(props) {
     }
 
     // Get tab num for transfer tab after handle done
-    let { tabNum } = useSelector(state => state.UIbookingReducer)
+    let { tabNum, listSeatSelectingByOthers } = useSelector(state => state.UIbookingReducer)
     console.log({ tabNum })
+    console.log({ listSeatSelectingByOthers })
     return (
         <div>
             <div>
@@ -117,16 +130,38 @@ export default function UItoBookingTicket(props) {
                                                         }
                                                         //Check seat have been booked by ourself
                                                         let cssYourSelection = chair.taiKhoanNguoiDat === userinfo.taiKhoan ? 'chosen-by-us' : ''
+
+                                                        //Check seat have been selecting by others
+                                                        let cssOnselectingSeatByOthers = ''
+                                                        let indexOthers = listSeatSelectingByOthers.findIndex(item => item.maGhe === chair.maGhe)
+                                                        if (indexOthers !== -1) {
+                                                            cssOnselectingSeatByOthers = 'selecting-seat_by_other_big'
+                                                        }
+
+                                                        //Render content of seat
+                                                        const renderSeatContent = () => {
+                                                            if (chair.daDat && cssYourSelection != '') {
+                                                                return <UserOutlined />
+                                                            }
+                                                            if (chair.daDat) {
+                                                                return 'X'
+                                                            }
+                                                            else {
+                                                                return chair.tenGhe
+                                                            }
+                                                        }
                                                         return <button key={index} onClick={() => {
                                                             console.log(chair)
-
-                                                            dispatch({
-                                                                type: BOOKING_TICKET,
-                                                                chair
-                                                            })
+                                                            const action = updateSeatRealTime(chair,maLichChieu,userinfo.taiKhoan)
+                                                            dispatch(action)
                                                         }}
-                                                            disabled={chair.daDat} className={`chair ${cssSelected} ${cssVip} ${cssOnselectingSeat} ${cssYourSelection}`}>
-                                                            {chair.daDat ? cssYourSelection != '' ? <UserOutlined /> : 'X' : chair.tenGhe}
+                                                            disabled={chair.daDat || cssOnselectingSeatByOthers != ''}
+                                                            className={`chair ${cssSelected} 
+                                                                                ${cssVip} ${cssOnselectingSeat}
+                                                                                ${cssYourSelection} 
+                                                                                ${cssOnselectingSeatByOthers}`}>
+                                                            {/* {chair.daDat ? cssYourSelection != '' ? <UserOutlined /> : 'X' : chair.tenGhe} */}
+                                                            {renderSeatContent()}
 
                                                         </button>
 
@@ -154,7 +189,11 @@ export default function UItoBookingTicket(props) {
                                                     </div>
                                                     <div className="d-flex align-items-center">
                                                         <div className="other-selected-seat mx-2 ">X</div>
-                                                        <h5>On seleteted by others</h5>
+                                                        <h5>Seleteted by others</h5>
+                                                    </div>
+                                                    <div className="d-flex align-items-center">
+                                                        <div className="selecting-seat_by_other mx-2 ">X</div>
+                                                        <h5>Selecting by others</h5>
                                                     </div>
                                                 </div>
                                             </div>

@@ -40,6 +40,7 @@ const initialState = {
         ]
     },
     tabNum:'1',
+    listSeatSelectingByOthers:[{maGhe:56333},{maGhe:56334}]
 
 }
 

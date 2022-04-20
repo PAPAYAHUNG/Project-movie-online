@@ -1,11 +1,12 @@
 import axios from "axios"
 import { DOMAIN } from "../../util/Settings/config"
-import { COMPLETE_BOOKING, GET_LIST_CINEMA, GET_LIST_CINEMA_REDUX, GET_LIST_DETAIL_FILMS_REDUX, GET_LIST_FILMS, GET_USER_BOOKING_HISTORY, HIDE_LOADING, PUT_FILM_ITEM_CLICKED, SET_DATA_BANNER, SET_INFO_UI_BOOK_FILMS, SET_USER_INFO, SHOW_LOADING, TURN_TAB_AFTER_BOOKING } from "../types/type-constant"
+import { BOOKING_TICKET, COMPLETE_BOOKING, GET_LIST_CINEMA, GET_LIST_CINEMA_REDUX, GET_LIST_DETAIL_FILMS_REDUX, GET_LIST_FILMS, GET_USER_BOOKING_HISTORY, HIDE_LOADING, PUT_FILM_ITEM_CLICKED, SET_DATA_BANNER, SET_INFO_UI_BOOK_FILMS, SET_USER_INFO, SHOW_LOADING, TURN_TAB_AFTER_BOOKING } from "../types/type-constant"
 import { manageFilmnServie } from "../../Services/ManageFilmService"
 import { useNavigate } from "react-router-dom"
 import { Navigate } from "react-router-dom"
 import { history } from "../../App"
 import React from 'react'
+import { connection } from "../.."
 
 export const getListFilm = (params) => {
     return async (dispatch) => {
@@ -129,18 +130,9 @@ export const BookingTicket = (seatInfo,idTranfer)=>{
             if(data.statusCode===200){
                 await dispatch(getListShownFilms(idTranfer))
             }
-           await dispatch({
-                type:COMPLETE_BOOKING
-            })
-           await dispatch({
-                type:HIDE_LOADING
-            })
-            dispatch({
-                type:TURN_TAB_AFTER_BOOKING
-            })
-            
-
-
+           await dispatch({type:COMPLETE_BOOKING })
+           await dispatch({type:HIDE_LOADING })
+            dispatch({type:TURN_TAB_AFTER_BOOKING })
         }catch (err){
             dispatch({
                 type:HIDE_LOADING
@@ -166,5 +158,27 @@ export const getHistoryUser = (params)=>{
             console.log(err.response.data)
         }
 
+    }
+}
+
+//Handle web socket realtime
+export const updateSeatRealTime = (chair,maLichCHieu,taiKhoan)=>{
+    return async (dispatch,getState)=>{
+        //Send info of this selecting seat onto reducer
+       await dispatch({
+        type: BOOKING_TICKET,
+        chair,
+        maLichCHieu
+    }) 
+    //Call api to backend
+    let listSeatBeingSelectingFromStore = getState().UIbookingReducer.listSeatSelecting
+    console.log({listSeatBeingSelectingFromStore})
+    console.log({maLichCHieu})
+    console.log({taiKhoan})
+
+    //Turn into string
+    let listSeatBeingSelectingFromStoreString= JSON.stringify(listSeatBeingSelectingFromStore)
+    //Call api of signalR
+     connection.invoke('datGhe',taiKhoan,listSeatBeingSelectingFromStoreString,maLichCHieu)
     }
 }

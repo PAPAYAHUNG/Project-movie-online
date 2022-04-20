@@ -1,4 +1,4 @@
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -66,136 +66,151 @@
   transform: translateY(-50%);
 }
 
-.itemFilm img{
+.itemFilm img {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
 }
 
-ul{
+ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.userinfo img{
-
+.userinfo img {
 }
 
-.monitorx{
+.monitorx {
   position: relative;
   margin: auto;
   width: 90%;
   height: 20px;
   background-color: rgb(80, 59, 22);
-  
 }
-.monitorx::after{
+.monitorx::after {
   position: absolute;
   display: block;
-  content: 'Monitor';
+  content: "Monitor";
   width: 100%;
   height: 75px;
   border-left: 37px solid transparent;
   border-right: 37px solid transparent;
-  border-bottom: 56px solid ;
-  border-bottom-color: rgba(142, 140, 136, 0.7) ;
+  border-bottom: 56px solid;
+  border-bottom-color: rgba(142, 140, 136, 0.7);
   /* box-shadow: 0px 10px 10px rgba(0, 05); */
 }
 
 .trapezoid {
-  border-bottom: 200px solid #18C973;
+  border-bottom: 200px solid #18c973;
   border-left: 100px solid transparent;
   border-right: 100px solid transparent;
   height: 0;
   width: 250px;
 }
-.chair{
+.chair {
   width: 50px;
   height: 50px;
   border-radius: 3px;
   background-color: bisque;
   display: flex;
   align-items: center;
- justify-content: center;
- margin: 2px;
+  justify-content: center;
+  margin: 2px;
 }
-.chair:hover{
+.chair:hover {
   background-color: rgb(9, 104, 31);
   cursor: pointer;
 }
 
-.list-audience{
+.list-audience {
   width: 90%;
   margin: 100px auto;
 }
-.listChair{
+.listChair {
   /* column-count: 16; */
   width: 90%;
-  margin: auto
+  margin: auto;
 }
-.normal-seat{
-background-color: bisque;
-width: 30px;height: 30px;
-border-radius: 5px;
+.normal-seat {
+  background-color: bisque;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
 }
-.normal-seat-big{
-background-color: rgb(5, 79, 81);
+.normal-seat-big {
+  background-color: rgb(5, 79, 81);
 }
-.vip-seat{
-background-color: rgb(160, 134, 95);
-width: 30px;height: 30px;
-border-radius: 5px;
+.vip-seat {
+  background-color: rgb(160, 134, 95);
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
 }
-.vip-seat-big{
-background-color: rgb(160, 134, 95);
-
+.vip-seat-big {
+  background-color: rgb(160, 134, 95);
 }
-.selecting-seat{
-background-color: rgb(112, 160, 95);
-width: 30px;height: 30px;
-border-radius: 5px;
+.selecting-seat {
+  background-color: rgb(112, 160, 95);
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
 }
-.selecting-seat-big{
-background-color: rgb(112, 160, 95);
+.selecting-seat-big {
+  background-color: rgb(112, 160, 95);
 }
-.selected-seat{
-background-color: rgb(5, 79, 81);
-width: 30px;height: 30px;
-border-radius: 5px;
+.selected-seat {
+  background-color: rgb(5, 79, 81);
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
 }
-.selected-seat-big{
-background-color: rgb(225, 74, 9);
-
+.selected-seat-big {
+  background-color: rgb(225, 74, 9);
 }
-.selected-seat-big:hover{
-background-color: rgba(33, 14, 6, 0.471);
-cursor: no-drop;
+.selected-seat-big:hover {
+  background-color: rgba(33, 14, 6, 0.471);
+  cursor: no-drop;
 }
-.chosen-by-us{
+.chosen-by-us {
   box-shadow: 5px 5px 10px rgb(79, 180, 173);
   background-color: rgb(5, 79, 81);
 }
-.other-selected-seat{
-background-color: rgb(225, 74, 9);
-width: 30px;height: 30px;
-border-radius: 5px;
+.selecting-seat_by_other {
+  background-color: rgb(52, 9, 225);
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
 }
-.other-selected-seat-big{
-background-color: rgb(225, 74, 9);
+.selecting-seat_by_other_big:hover {
+  background-color: rgba(33, 14, 6, 0.471);
+  cursor: no-drop;
+  
 }
-.other-selected-seat-big:hover{
-cursor: no-drop;
+.selecting-seat_by_other_big {
+  background-color: rgb(52, 9, 225);
+}
+.other-selected-seat {
+  background-color: rgb(225, 74, 9);
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+}
+.other-selected-seat-big {
+  background-color: rgb(225, 74, 9);
+}
+.other-selected-seat-big:hover {
+  cursor: no-drop;
 }
 /* .vip-seat-big:hover{
 cursor: no-drop;
 } */
-.bill-zone{
+.bill-zone {
   width: 80%;
   margin: auto;
   box-shadow: 5px 5px 10px rgb(112, 160, 95);
 }
-.bookingUI{
+.bookingUI {
   background-image: url(../assets/BG-image/Marvel-Thor-Wallpapers.jpg);
   background-repeat: no-repeat;
   background-size: 100%;
@@ -203,17 +218,16 @@ cursor: no-drop;
   top: 0;
   left: 0;
   right: 0;
-
 }
-.overlay{
-  background-color: rgb(0, 0, 0,0.7);
+.overlay {
+  background-color: rgb(0, 0, 0, 0.7);
 }
-.navbar{
+.navbar {
   background-color: unset;
 }
 
 /* ----------------ADMIN PAGE-------------- */
-.sidebar-admin{
+.sidebar-admin {
   position: fixed;
   left: 0;
   width: 250px;
@@ -222,36 +236,35 @@ cursor: no-drop;
   top: 0;
 }
 
-.sidebar-admin li{
+.sidebar-admin li {
   padding: 20px 20px;
 }
-.sidebar-admin li:hover{
- background-color: cadetblue;
+.sidebar-admin li:hover {
+  background-color: cadetblue;
 }
-.dropdown button{
+.dropdown button {
   width: 100%;
 }
-.dropdown-menu{
+.dropdown-menu {
   width: 100%;
 }
-.isShown{
+.isShown {
   display: block !important;
 }
-.mainzone-admin{
+.mainzone-admin {
   position: absolute;
   left: 250px;
 }
-.itemFilmx:hover{
+.itemFilmx:hover {
   cursor: pointer;
   transform: scale(1.1);
   z-index: 1;
 }
 
 /* ------customize ant when conflict with flick */
-.ant-carousel .slick-dots{
+.ant-carousel .slick-dots {
   margin-left: -8%;
 }
-
 
 /* -----------------Flip cart------------ */
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
@@ -279,7 +292,8 @@ cursor: no-drop;
 }
 
 /* Position the front and back side */
-.flip-card-front, .flip-card-back {
+.flip-card-front,
+.flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -302,40 +316,38 @@ cursor: no-drop;
   background-color: rgba(0, 0, 0, 0.7);
   /* background-image: url(''); */
 }
-.button-play{
+.button-play {
   color: rgb(255, 80, 80);
-  
 }
-.button-play:hover{
+.button-play:hover {
   cursor: pointer;
   transform: scale(1.07);
 }
-.tab-display{
-background-color: rgb(14, 86, 186);
+.tab-display {
+  background-color: rgb(14, 86, 186);
 }
-.tab-d-none{
-  background-color:unset
+.tab-d-none {
+  background-color: unset;
 }
 .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-  color: #eb1313 !important; 
+  color: #eb1313 !important;
   font-weight: 500;
   font-size: larger;
 }
-.ant-tabs-tab{
+.ant-tabs-tab {
   font-size: large;
 }
 .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-  color: #0b94c5 !important; 
+  color: #0b94c5 !important;
   font-weight: 500;
   font-size: larger;
 }
 
 /* ------------film-detail when clicked-------- */
-.film-detail{
-    /* background: url('../assets/BG-image/backgorund.jpg') 100% no-repeat center; */
-    background-image: url(../assets/BG-image/932568.jpg);
-    background-size: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-
+.film-detail {
+  /* background: url('../assets/BG-image/backgorund.jpg') 100% no-repeat center; */
+  background-image: url(../assets/BG-image/932568.jpg);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
