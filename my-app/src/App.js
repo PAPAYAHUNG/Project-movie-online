@@ -15,6 +15,10 @@ import UIWhenClicked from './component/Layout/BigLayout/UIWhenClicked';
 import { Suspense, lazy } from 'react';
 import ProtectedRoutes from './component/Layout/BigLayout/ProtectedRoutes';
 import Loading from './component/Loading/Loading';
+import UserInfo from './component/Layout/BigLayout/UserInfo';
+import AdminPage from './component/AdminPage/AdminPage';
+import FilmsAdmin from './component/AdminPage/FilmsAdmin';
+import UserAdmin from './component/AdminPage/UserAdmin';
 export const history = createBrowserHistory()
 
 const UItoBookingTicketLazy = lazy(() => import('./component/Layout/BigLayout/UItoBookingTicket'))
@@ -26,6 +30,14 @@ function App() {
         <Routes history={history}>
           <Route element={<ProtectedRoutes />}>
             <Route path='/booking:maPhim' element={<UItoBookingTicketLazy />} />
+            <Route path='/userInfo' element={<UserInfo />} />
+          </Route>
+          <Route element={<ProtectedRoutes />}>
+            <Route path='admin' element={<AdminPage />} >
+                <Route path='films-admin' element={<FilmsAdmin/>}/>
+                <Route path='user-admin' element={<UserAdmin/>}/>
+                {/* <Route index element={<UserAdmin/>}/> */}
+            </Route>
           </Route>
           <Route path='/' element={<Homes />}>
             <Route path='/' element={<HomeLayOut />} />

@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import moment from 'moment'
 import { Tabs, Radio, Space } from 'antd';
@@ -14,6 +14,9 @@ export default function DetailOfFilms() {
 
     const [state, setState] = useState({ tabPosition: 'left' })
 
+    useEffect(()=>{
+        window.scrollTo(0,0)
+    })
 
     const changeTabPosition = e => {
         this.setState({ tabPosition: e.target.value });
@@ -23,10 +26,10 @@ export default function DetailOfFilms() {
 
     let dispatch = useDispatch()
     let param = useParams()
+
+
     return (
         <div>
-
-
             <div className='film-detail'>
                 <div>
                     <div className="d-flex">

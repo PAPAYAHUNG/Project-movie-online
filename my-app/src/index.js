@@ -10,6 +10,7 @@ import store from './redux/configStore'
 // import "slick-carousel/slick/slick-theme.css";
 import * as signalR from'@microsoft/signalr'
 import { DOMAIN } from './util/Settings/config';
+import './i18n'
 
 //Code to connect to server to listen to the change on each client
 export const connection = new signalR.HubConnectionBuilder().withUrl(`${DOMAIN}/DatVeHub`).configureLogging(signalR.LogLevel.Information).build();

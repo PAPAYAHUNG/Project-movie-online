@@ -49,7 +49,7 @@ export default function DetailFilmWithBrand() {
                                             <div className="col-9">
                                                 <div className="row">
                                                     <h5>{item2.tenCumRap}</h5>
-                                                    <p>{item2.diaChi}</p>
+                                                    <p>{item2.diaChi.length>30?`${item2.diaChi.slice(0,30)} ...`:item2.diaChi}</p>
                                                 </div>
                                             </div>
                                         </div>

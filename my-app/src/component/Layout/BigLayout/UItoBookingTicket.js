@@ -1,5 +1,5 @@
 import Item from 'antd/lib/list/Item'
-import React, { useEffect } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useParams } from 'react-router-dom'
 import { BookingTicket, getHistoryUser, getListShownFilms, updateSeatRealTime } from '../../../redux/action/ManagerAction'
@@ -19,7 +19,7 @@ export default function UItoBookingTicket(props) {
     let userinfo = JSON.parse(localStorage.getItem("USER_LOGIN_MOVIE"))
     console.log('USER TAI KHOAN', userinfo)
 
-
+    console.log("aaaaaaaaaaaa", userinfo.taiKhoan.slice(0, 1))
 
     let { listSeatSelecting } = useSelector(state => state.UIbookingReducer)
     console.log({ listSeatSelecting })
@@ -31,20 +31,23 @@ export default function UItoBookingTicket(props) {
 
     console.log(maLichChieu)
     let idTranfer = localStorage.getItem('maLichCHieu')
+
+    useEffect(()=>{
+        window.scrollTo(0,0)
+    })
+
     useEffect(() => {
         dispatch(getListShownFilms(idTranfer))
         dispatch(getHistoryUser(userinfo.taiKhoan))
 
         //When 1st coming to the page load all seat of server
-        connection.on('loadDanhSachGhe',(maLichChieu)=>{
-            console.log("loadDanhSachGhe",maLichChieu)
-        })
+        connection.on('loadDanhSachGhe', maLichChieu)
         //Load list seat being book by others from server-Always listen to server if any action from other users
         connection.on("loadDanhSachGheDaDat", (dsGheKhachDat) => {
-            console.log('danhSachGheKhachDat',dsGheKhachDat);
-            
-            
-         })
+            console.log('danhSachGheKhachDat', dsGheKhachDat);
+
+
+        })
 
     }, [])
     const { TabPane } = Tabs;
@@ -60,6 +63,22 @@ export default function UItoBookingTicket(props) {
     let { tabNum, listSeatSelectingByOthers } = useSelector(state => state.UIbookingReducer)
     console.log({ tabNum })
     console.log({ listSeatSelectingByOthers })
+
+    // Operation to get extracontent
+    const operation = <Fragment>
+    </Fragment>
+
+    //After a redirect to home, should reset the tabNum of active key on reducer
+    //So use unmount after we navigate to others page then dispatch this action
+    useEffect(() => {
+        return () => {
+            dispatch({
+                type: CHANGE_TAB_ACTIVE,
+                number: "1"
+            })
+
+        }
+    }, [])
     return (
         <div>
             <div>
@@ -75,21 +94,32 @@ export default function UItoBookingTicket(props) {
                             </button>
                             <div className="collapse navbar-collapse" id="collapsibleNavId">
                                 <ul className="navbar-nav ml-auto mt-2 mt-lg-0 align-item-center">
-                                    <li className="nav-item">
-                                        <NavLink to='/'  >
-                                            HOME
+                                    <li className="nav-item text-booking d-flex" >
+                                        <NavLink to='/' className='mx-4 d-flex justify-content-center align-items-center' >
+                                            <h5>Home</h5>
+                                        </NavLink >
+                                    </li>
+                                    <li className="nav-item text-booking">
+                                        <NavLink to='/userInfo'  >
+                                            <div className="userinfo ml-auto ">
+                                                <div className="d-flex align-items-center ">
+                                                    <h5>{userinfo.taiKhoan} </h5>
+
+                                                    <h5 className='mx-3 bg-light d-flex justify-content-center align-items-center' style={{ width: 50, height: 50, borderRadius: "50%" }}>{userinfo.taiKhoan.toString().slice(0, 1)}</h5>
+                                                </div>
+                                            </div>
+                                        </NavLink >
+                                    </li>
+                                    <li className="nav-item text-booking d-flex" >
+                                        <NavLink to='/' className='mx-4 d-flex justify-content-center align-items-center' >
+                                            <button onClick={() => {
+                                                localStorage.removeItem('ACCESS_TOKEN_MOVIE')
+                                                localStorage.removeItem('USER_LOGIN_MOVIE')
+                                                window.location.reload()
+                                            }} className='btn btn-danger'>Log Out</button>
                                         </NavLink >
                                     </li>
 
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="#">
-                                            <div className="userinfo ml-auto ">
-                                                <div className="d-flex align-items-center ">
-                                                    <h5>{userinfo.hoTen} <i className="fa fa-arrow-down" /></h5>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
 
                                 </ul>
                             </div>
@@ -97,7 +127,7 @@ export default function UItoBookingTicket(props) {
 
                         {/* Tab nav zone */}
 
-                        <Tabs defaultActiveKey="1" activeKey={tabNum} onChange={callback}>
+                        <Tabs tabBarExtraContent={operation} defaultActiveKey="1" activeKey={tabNum} onChange={callback}>
                             <TabPane tab="BOOKING" key="1" >
                                 {/* seat-choosing */}
                                 <div className="timeToChoose pb-5">
@@ -152,7 +182,7 @@ export default function UItoBookingTicket(props) {
                                                         }
                                                         return <button key={index} onClick={() => {
                                                             console.log(chair)
-                                                            const action = updateSeatRealTime(chair,maLichChieu,userinfo.taiKhoan)
+                                                            const action = updateSeatRealTime(chair, maLichChieu, userinfo.taiKhoan)
                                                             dispatch(action)
                                                         }}
                                                             disabled={chair.daDat || cssOnselectingSeatByOthers != ''}
@@ -263,6 +293,9 @@ export default function UItoBookingTicket(props) {
                             </TabPane>
                             <TabPane tab="PAYMENT" key="2">
                                 <BookingUI {...props} />
+                            </TabPane>
+                            <TabPane tab={<NavLink to="/"><div><i class="fa fa-home"></i></div></NavLink>} key="3">
+
                             </TabPane>
                         </Tabs>
 
