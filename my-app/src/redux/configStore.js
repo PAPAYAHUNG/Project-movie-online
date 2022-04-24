@@ -7,6 +7,7 @@ import ReducerFilmDetail from './reducers/ReducerFilmDetail'
 import UIbookingReducer from './reducers/UIbookingReducer'
 import UserLoginReducer from './reducers/UserLoginReducer'
 import LoadingReducer from './reducers/LoadingReducer'
+import AdminReducer from './reducers/AdminReducer'
 const rootReducer = combineReducers({
     //state of app
     BannerReducer,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
     ReducerFilmDetail,
     UIbookingReducer,
     UserLoginReducer,
-    LoadingReducer
+    LoadingReducer,
+    AdminReducer
 })
 
 const store = createStore(rootReducer,applyMiddleware(thunk))

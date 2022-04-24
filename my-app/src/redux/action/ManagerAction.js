@@ -179,6 +179,7 @@ export const updateSeatRealTime = (chair,maLichCHieu,taiKhoan)=>{
     //Turn into string
     let listSeatBeingSelectingFromStoreString= JSON.stringify(listSeatBeingSelectingFromStore)
     //Call api of signalR
-     connection.invoke('datGhe',taiKhoan,listSeatBeingSelectingFromStoreString,maLichCHieu)
+    //  connection.invoke('datGhe',taiKhoan,listSeatBeingSelectingFromStoreString,maLichCHieu)
     }
 }
+

@@ -8,7 +8,7 @@ export default function AdminPage() {
     let userinfo = JSON.parse(localStorage.getItem("USER_LOGIN_MOVIE"))
     console.log('USER TAI KHOAN', userinfo)
 
-    let [isShown, setIshown]=useState(false)
+    let [isShown, setIshown] = useState(false)
     return (
         <div>
             <div className="adminPage">
@@ -21,18 +21,20 @@ export default function AdminPage() {
                                     <i className="fa fa-user" /> User
                                 </li>
                             </NavLink>
-                            <NavLink to="films-admin" onClick={()=>{
-                                setIshown(prevCheck=>!prevCheck)
+                            <NavLink to="films-admin" onClick={() => {
+                                setIshown(prevCheck => !prevCheck)
                             }}>
                                 <li>
                                     <i className="fa fa-film" /> Films
                                 </li>
                             </NavLink>
-                            {isShown? <Fragment>
-                                <li className="ml-3"><i className="fa fa-film" /> Films</li>
-                            <li className="ml-3"><i className="fa fa-plus" /> Add more</li>
-                            </Fragment>:""}
-                            
+
+                            {isShown ? <Fragment>
+                                <NavLink to="add-films">
+                                    <li className="ml-3"><i className="fa fa-plus" /> Add more</li>
+                                </NavLink>
+                            </Fragment> : ""}
+
                             <li><i className="fa fa-tv" /> Show more </li>
                         </ul>
                     </div>

@@ -16,7 +16,7 @@ import './i18n'
 export const connection = new signalR.HubConnectionBuilder().withUrl(`${DOMAIN}/DatVeHub`).configureLogging(signalR.LogLevel.Information).build();
 
 
-connection.start().then(() => {
+
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
@@ -30,9 +30,24 @@ ReactDOM.render(
   ,
   document.getElementById('root')
 );
-}).catch(errors => {
-  console.log(errors);
-})
+
+// connection.start().then(() => {
+// ReactDOM.render(
+//   <Provider store={store}>
+//     <BrowserRouter>
+//       <Routes>
+//         <Route path="/*" element={<App />}>
+//         </Route>
+//       </Routes>
+//     </BrowserRouter>
+
+//   </Provider>
+//   ,
+//   document.getElementById('root')
+// );
+// }).catch(errors => {
+//   console.log(errors);
+// })
 
 
 // If you want to start measuring performance in your app, pass a function
