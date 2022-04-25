@@ -16,26 +16,41 @@ import {
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 import { useFormik } from 'formik';
 import moment from 'moment'
-import { AddFilmAdminAction } from '../../redux/action/AdminAction';
-import { useNavigate } from 'react-router-dom';
+import { getInfoEditFilmAdminAction, UpdateInfoEditFilmAdminAction } from '../../../redux/action/AdminAction';
+import { useParams } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom'
 
-export default function AddNewFilms() {
+
+export default function Edit() {
     let dispatch = useDispatch()
+
+    let {idFilm} = useParams()
+    console.log(idFilm)
+    //Load the clicked film that wanted to edit
+    useEffect(()=>{
+        dispatch(getInfoEditFilmAdminAction(idFilm))
+    },[])
+
     let navigate = useNavigate()
+
+    //Get data edit from reducer
+    let {filmEditInfo} = useSelector(state=>state.AdminReducer)
+    console.log({filmEditInfo})
     //Use formik to collect input data
     const formik = useFormik({
+        enableReinitialize:true,
         initialValues: {
-            maPhim: '',
-            tenPhim: '',
-            trailer: '',
-            moTa: '',
-            maNhom: '',
-            ngayKhoiChieu: '',
-            SapChieu: false,
-            DangChieu: false,
-            Hot: false,
-            danhGia: 0,
-            hinhAnh: '',
+            maPhim: filmEditInfo.maPhim,
+            tenPhim: filmEditInfo.tenPhim,
+            trailer: filmEditInfo.trailer,
+            moTa: filmEditInfo.moTa,
+            maNhom: 'GP15',
+            ngayKhoiChieu: filmEditInfo.ngayKhoiChieu,
+            SapChieu: filmEditInfo.sapChieu,
+            DangChieu: filmEditInfo.dangChieu,
+            Hot: filmEditInfo.hot,
+            danhGia: filmEditInfo.danhGia,
+            hinhAnh: null,
         },
         onSubmit: values => {
             //   alert(JSON.stringify(values, null, 2));
@@ -50,21 +65,20 @@ export default function AddNewFilms() {
                     formData.append(key,values[key])
                 }
                 else{
-                    formData.append('File',values.hinhAnh,values.hinhAnh.name)
+                    if(values.hinhAnh!==null){
+                        formData.append('File',values.hinhAnh,values.hinhAnh.name)
+                    }
                 }
             }
             console.log("formData",formData.get('File'))
-            //dispacth this form to the server
-            dispatch(AddFilmAdminAction(formData))
-            navigate('/admin/films-admin')
+            // dispacth this form to the server
+            dispatch(UpdateInfoEditFilmAdminAction(formData,navigate))
         },
     }); 
 
 
-    //Auto scroll to Top
-    useEffect(()=>{
-        window.scrollTo(0,0)
-    },[])
+    console.log('hot',formik.values.ngayKhoiChieu)
+    
 
     const [componentSize, setComponentSize] = useState('default');
 
@@ -84,7 +98,7 @@ export default function AddNewFilms() {
 
     //Handle for chosing day action
     const handleChangeDatePicker = (value) => {
-        let pickedDay = moment(value).format('DD/MM/YYYY')
+        let pickedDay = moment(value)
         formik.setFieldValue("ngayKhoiChieu", pickedDay)
     }
     const handelChangeSwitch = (name) => {
@@ -94,14 +108,16 @@ export default function AddNewFilms() {
     }
 
     //Set useState of src img
-    const [srcImg, setSrcImg] = useState(null)
-
+    const [srcImg, setSrcImg] = useState('')
 
     //Handle to get file from pc
-    const handleChangePhoto = (e) => {
+    const handleChangePhoto = async (e) => {
         let file = e.target.files[0]
         console.log('file', file)
         if (file.type === "image/png" || file.type === "image/jpeg" || file.type === "image/jpg") {
+
+            //Bring this file data set to formik
+          await  formik.setFieldValue('hinhAnh',file)
 
             //Create object to reader file
             let reader = new FileReader()
@@ -113,8 +129,7 @@ export default function AddNewFilms() {
                 //setState with format base 64 for img
                 setSrcImg(imgUrl)
             }
-            //Bring this file data set to formik
-            formik.setFieldValue('hinhAnh',file)
+            
         }
 
     }
@@ -122,7 +137,7 @@ export default function AddNewFilms() {
 
     return (
         <div className='mt-5'>
-            <h3 className='display-4'>Add film</h3>
+            <h3 className='display-4 text-center'>Edit film</h3>
             <Form
                 onSubmitCapture={formik.handleSubmit}
                 labelCol={{
@@ -148,17 +163,17 @@ export default function AddNewFilms() {
                 <Form.Item label="Name">
                     <Input name='tenPhim'
                         onChange={formik.handleChange}
-                        value={formik.values.name} />
+                        value={formik.values.tenPhim} />
                 </Form.Item>
                 <Form.Item label="Trailer">
                     <Input name='trailer'
                         onChange={formik.handleChange}
-                        value={formik.values.name} />
+                        value={formik.values.trailer} />
                 </Form.Item>
                 <Form.Item label="Description">
                     <Input name='moTa'
                         onChange={formik.handleChange}
-                        value={formik.values.name} />
+                        value={formik.values.moTa} />
                 </Form.Item>
 
 
@@ -168,23 +183,28 @@ export default function AddNewFilms() {
                         name='ngayKhoiChieu'
                         format={'DD/MM/YYYY'}
                         onChange={handleChangeDatePicker}
+                        value={moment(formik.values.ngayKhoiChieu)}
                     />
                 </Form.Item>
                 <Form.Item label="Soon" valuePropName="checked"  >
-                    <Switch
+                    <Switch checked={formik.values.SapChieu}
                         onChange={(value) => {
                             handelChangeSwitch('SapChieu')
                             formik.setFieldValue('SapChieu', value)
                         }} name="SapChieu" />
                 </Form.Item>
-                <Form.Item label="Showing" valuePropName="checked">
-                    <Switch onChange={handelChangeSwitch('DangChieu')} name="DangChieu" />
+
+                <Form.Item  label="Showing" valuePropName="checked">
+                    <Switch checked={formik.values.DangChieu} onChange={handelChangeSwitch('DangChieu')} name="DangChieu" />
                 </Form.Item>
+
                 <Form.Item label="Hot" valuePropName="checked">
-                    <Switch onChange={handelChangeSwitch('Hot')} name="Hot" />
+                    <Switch checked={formik.values.Hot}  onChange={handelChangeSwitch('Hot')} name="Hot" />
                 </Form.Item>
+
                 <Form.Item label="Ranking">
                     <InputNumber name='danhGia' min={1} max={10}
+                    value={formik.values.danhGia}
                         onChange={(value) => {
                             formik.setFieldValue('danhGia', value)
                         }} />
@@ -196,13 +216,12 @@ export default function AddNewFilms() {
                         type="file"
                         onChange={handleChangePhoto}
                     />
-                    <img  src={srcImg} style={{ width: 160, height: 130 }} alt="..." />
+                    <img  src={srcImg===""?filmEditInfo.hinhAnh:srcImg} 
+                    style={{ width: 160, height: 130 }} alt="..." />
                 </Form.Item>
 
                 <Form.Item label="Action">
-                    <button onClick={()=>{
-                        // dispatch()
-                    }} className='btn btn-primary' type='submit'>Submit</button>
+                    <button className='btn btn-primary' type='submit'>Update</button>
                 </Form.Item>
             </Form>
         </div>

@@ -13,6 +13,7 @@ export class baseService {
     }
     delete = (url,model)=>{
        let headers= {'Authorization': 'Bearer '+localStorage.getItem(TOKEN)}
+       console.log(headers)
         return axios.delete(`${DOMAIN}/${url}`,model,{headers:headers})
     }
     get = (url)=>{

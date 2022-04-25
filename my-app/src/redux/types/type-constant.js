@@ -23,3 +23,4 @@ export const CHANGE_TAB_ACTIVE='CHANGE_TAB_ACTIVE'
 
 //------ADMIN service------------
 export const LOAD_LISTFILM_ADMIN ='LOAD_LISTFILM_ADMIN'
+export const LOAD_FILM_INFO_ADMIN ='LOAD_FILM_INFO_ADMIN'

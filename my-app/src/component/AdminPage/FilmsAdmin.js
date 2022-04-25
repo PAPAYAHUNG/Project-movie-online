@@ -2,10 +2,11 @@ import React, { Fragment, useEffect } from 'react'
 import { Table } from 'antd';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { LoadListFilmAdminAction } from '../../redux/action/AdminAction';
+import { DeleteFilmAdminAction, LoadListFilmAdminAction, SearchFilmAdminAction } from '../../redux/action/AdminAction';
 
 import { Input, Space } from 'antd';
 import { AudioOutlined } from '@ant-design/icons';
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -31,7 +32,7 @@ export default function FilmsAdmin() {
     {
       title: 'Thumbnail',
       dataIndex: 'hinhAnh',
-      width:200,
+      width: 200,
       render: (text, record, index) => {
         return <img key={index} src={text} alt='text' style={{ width: 100 }}
           onError={({ currentTarget }) => {
@@ -63,11 +64,27 @@ export default function FilmsAdmin() {
     },
     {
       title: 'Action',
-      dataIndex: 'action',
+      dataIndex: 'maPhim',
       render: (text, record, index) => {
         return <Fragment key={index} >
-          <button className='btn btn-primary '><i className="fa fa-edit"></i></button>
-          <button className='btn btn-danger ml-3 '><i className="fa fa-trash-alt"></i></button>
+          <NavLink to={`edit/${record.maPhim}`} replace><button className='btn btn-primary '><i className="fa fa-edit"></i></button></NavLink>
+
+          <span ><button className='btn btn-danger mx-3'
+            onClick={() => {
+              console.log('maPhim', record.maPhim)
+              console.log('typemaPhim', typeof (record.maPhim))
+
+              if (window.confirm(`Please confirm to delete: ${record.tenPhim}`)) {
+                dispatch(DeleteFilmAdminAction(record.maPhim))
+              }
+            }}>
+            <i className="fa fa-trash-alt"></i></button>
+          </span>
+          <NavLink to={`showTime/${record.maPhim}`}>
+            <button className='btn btn-warning'>
+              <i class="fa fa-calendar-alt"></i>
+            </button>
+          </NavLink>
         </Fragment>
       },
 
@@ -112,7 +129,7 @@ export default function FilmsAdmin() {
     },
   ];
 
-  function onChange(pagination, filters, sorter, extra) {
+  function onChange1(pagination, filters, sorter, extra) {
     console.log('params', pagination, filters, sorter, extra);
   }
 
@@ -128,7 +145,11 @@ export default function FilmsAdmin() {
     />
   );
 
-  const onSearch = value => console.log(value);
+  const onSearch = (value) => {
+    // console.log(value.nativeEvent.data)
+    dispatch(LoadListFilmAdminAction(value))
+
+  };
   return (
     <div className='mt-4'>
       <Search
@@ -137,8 +158,9 @@ export default function FilmsAdmin() {
         enterButton="Search"
         size="large"
         onSearch={onSearch}
+      // onChange={onSearch}
       />
-      <Table className='mt-3' columns={columns} dataSource={newListFilmsAdmin} onChange={onChange} />
+      <Table className='mt-3' rowKey={"maPhim"} columns={columns} dataSource={newListFilmsAdmin} onChange={onChange1} />
     </div>
   )
 }

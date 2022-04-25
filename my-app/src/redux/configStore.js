@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
     UIbookingReducer,
     UserLoginReducer,
     LoadingReducer,
-    AdminReducer
+    AdminReducer,
 })
 
 const store = createStore(rootReducer,applyMiddleware(thunk))

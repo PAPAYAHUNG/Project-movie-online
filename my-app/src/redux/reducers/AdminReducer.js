@@ -1,4 +1,4 @@
-import { LOAD_LISTFILM_ADMIN } from "../types/type-constant"
+import { LOAD_FILM_INFO_ADMIN, LOAD_LISTFILM_ADMIN } from "../types/type-constant"
 
 /* eslint-disable import/no-anonymous-default-export */
 const initialState = {
@@ -14,8 +14,10 @@ const initialState = {
           "ngayKhoiChieu": "",
           "danhGia": ''
         },
+      ],
+      filmEditInfo:{
         
-      ]
+      }
 }
 
 export default (state = initialState, action) => {
@@ -24,6 +26,9 @@ export default (state = initialState, action) => {
         return {...state,listFilmAdmin:action.data}
     }
   
+    case LOAD_FILM_INFO_ADMIN:{
+      return{...state,filmEditInfo:action.data}
+    }
     
 
   default: return { ...state}

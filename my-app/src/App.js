@@ -20,6 +20,8 @@ import AdminPage from './component/AdminPage/AdminPage';
 import FilmsAdmin from './component/AdminPage/FilmsAdmin';
 import UserAdmin from './component/AdminPage/UserAdmin';
 import AddNewFilms from './component/AdminPage/AddNewFilms';
+import Edit from './component/AdminPage/Edit/Edit';
+import Showtime from './component/AdminPage/Edit/Showtime';
 export const history = createBrowserHistory()
 
 const UItoBookingTicketLazy = lazy(() => import('./component/Layout/BigLayout/UItoBookingTicket'))
@@ -38,6 +40,8 @@ function App() {
                 <Route path='films-admin' element={<FilmsAdmin/>}/>
                 <Route path='user-admin' element={<UserAdmin/>}/>
                 <Route path='add-films' element={<AddNewFilms/>}/>
+                <Route path='films-admin/edit/:idFilm' element={<Edit/>}/>
+                <Route path='films-admin/showTime/:idFilm' element={<Showtime/>}/>
                 {/* <Route index element={<UserAdmin/>}/> */}
             </Route>
           </Route>
