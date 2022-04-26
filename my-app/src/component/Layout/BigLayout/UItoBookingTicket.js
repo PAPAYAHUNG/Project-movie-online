@@ -180,7 +180,8 @@ export default function UItoBookingTicket(props) {
                                                                 return chair.tenGhe
                                                             }
                                                         }
-                                                        return <button key={index} onClick={() => {
+                                                        return <Fragment  key={index}>
+                                                            <button onClick={() => {
                                                             console.log(chair)
                                                             const action = updateSeatRealTime(chair, maLichChieu, userinfo.taiKhoan)
                                                             dispatch(action)
@@ -192,8 +193,9 @@ export default function UItoBookingTicket(props) {
                                                                                 ${cssOnselectingSeatByOthers}`}>
                                                             {/* {chair.daDat ? cssYourSelection != '' ? <UserOutlined /> : 'X' : chair.tenGhe} */}
                                                             {renderSeatContent()}
-
                                                         </button>
+                                                            {(index + 1) % 16==0 ? <br/> : ''}
+                                                        </Fragment>
 
                                                     })}
                                                 </div>

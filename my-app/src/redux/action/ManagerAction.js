@@ -37,6 +37,18 @@ export const getListBrandCinema = (params) => {
         }
     }
 }
+
+export const getAllCenimaAction = ()=>{
+    return async (dispacth)=>{
+        try{
+            let {data} = await manageFilmnServie.getAllCenima()
+            console.log(data)
+        }catch (err){
+            console.log(err.resolve.data)
+        }
+    }
+}
+
 export const getListDetailedFilms = (params) => {
     return async (dispatch) => {
         try {

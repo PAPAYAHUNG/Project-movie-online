@@ -27,11 +27,15 @@ export class AdminService extends baseService{
     }
     //Delete film onto server
     DeleteFilmAdmin = (filmID)=>{
-        return this.delete(`/api/QuanLyPhim/XoaPhim?MaPhim=${filmID}`)
+        return this.delete(`api/QuanLyPhim/XoaPhim?MaPhim=${filmID}`)
     }
     //Search film onto server
     SearchFilmAdmin = (name)=>{
         return this.get(`api/QuanLyPhim/LayDanhSachPhim?maNhom=GP15&tenPhim=${name}`)
+    }
+    //Create showtime film
+    AddShowtimeFilmAdmin = (objectFilm)=>{
+        return this.post(`api/QuanLyDatVe/TaoLichChieu`,objectFilm)
     }
 
 }

@@ -81,7 +81,9 @@ export default function FilmsAdmin() {
             <i className="fa fa-trash-alt"></i></button>
           </span>
           <NavLink to={`showTime/${record.maPhim}`}>
-            <button className='btn btn-warning'>
+            <button onClick={()=>{
+              localStorage.setItem('filmParams',JSON.stringify(record))
+            }} className='btn btn-warning'>
               <i class="fa fa-calendar-alt"></i>
             </button>
           </NavLink>
