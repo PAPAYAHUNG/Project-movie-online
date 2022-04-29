@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation, useParams } from 'react-router-dom'
 import { Select } from 'antd';
 import { useTranslation } from 'react-i18next';
 import _ from 'lodash'
@@ -10,6 +10,8 @@ export default function Header() {
         i18n.changeLanguage(value)
         console.log(`selected ${value}`);
     }
+    let location = useLocation()
+    console.log({ location })
 
     //Check user login or not from local storage
     let userinfo = JSON.parse(localStorage.getItem("USER_LOGIN_MOVIE"))
@@ -29,11 +31,12 @@ export default function Header() {
         }
         else {
             return <Fragment>
-                <NavLink to='/userInfo'>
-                    <button className="btn btn-success mr-3">{`${t('hello')}! ${userinfo.taiKhoan}`}</button>
-                </NavLink>
+                {location.pathname !== '/userInfo' ?
+                    <NavLink to='/userInfo'>
+                        <button className="btn btn-success mr-3">{`${t('hello')}! ${userinfo.taiKhoan}`}</button>
+                    </NavLink> : ''}
                 <NavLink to='signIn'>
-                    <button className="btn btn-warning mr-3" onClick={()=>{
+                    <button className="btn btn-warning mr-3" onClick={() => {
                         localStorage.removeItem('ACCESS_TOKEN_MOVIE')
                         localStorage.removeItem('USER_LOGIN_MOVIE')
                     }}>{t('signout')}</button>

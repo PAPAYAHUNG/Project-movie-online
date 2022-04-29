@@ -8,6 +8,7 @@ import UIbookingReducer from './reducers/UIbookingReducer'
 import UserLoginReducer from './reducers/UserLoginReducer'
 import LoadingReducer from './reducers/LoadingReducer'
 import AdminReducer from './reducers/AdminReducer'
+import UserManageReducer from './reducers/UserManageReducer'
 const rootReducer = combineReducers({
     //state of app
     BannerReducer,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
     UserLoginReducer,
     LoadingReducer,
     AdminReducer,
+    UserManageReducer
 })
 
 const store = createStore(rootReducer,applyMiddleware(thunk))

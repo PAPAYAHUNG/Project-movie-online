@@ -67,7 +67,7 @@ export const DeleteFilmAdminAction = (id)=>{
             dispatch(LoadListFilmAdminAction())
         }catch (err){
             console.log(err.response.data)
-            alert('Delete film failed')
+            alert('This function is temparory blocked as some issue in Server!')
         }
     }
 }
@@ -80,5 +80,30 @@ export const SearchFilmAdminAction = (keyWord)=>{
         }catch (err){
             console.log(err.response?.data)
         }
+    }
+}
+
+//------------User Normal---------
+
+export const fetchUserInfoAction = (userName)=>{
+    return async (dispatch)=>{
+        try{
+            let {data} = adminService.GetUserInfoAdmin(userName)
+            console.log({data})
+        }catch (err){
+            console.log(err)
+        }
+    }
+}
+
+export const UpdateNewUserAction = (userUpdated)=>{
+    return async (dispatch)=>{
+        try{
+            let {data} = await adminService.UpdateUserInfoNormal(userUpdated)
+            console.log({data})
+        }catch (err){
+            console.log(err.response.data)
+        }
+
     }
 }

@@ -341,7 +341,7 @@ export default function UItoBookingTicket(props) {
     )
 }
 
-function BookingUI(props) {
+export function BookingUI(props) {
     let dispatch = useDispatch()
     let userinfo = JSON.parse(localStorage.getItem("USER_LOGIN_MOVIE"))
 

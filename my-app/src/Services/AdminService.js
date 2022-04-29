@@ -38,5 +38,25 @@ export class AdminService extends baseService{
         return this.post(`api/QuanLyDatVe/TaoLichChieu`,objectFilm)
     }
 
+
+
+    //---------------USER NORMAL MANAGE -----------
+    GetInfoFilmNormal = (userName)=>{
+        return this.get(`api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP15&tuKhoa=${userName}`)
+    }
+    UpdateUserInfoNormal = (user)=>{
+        return this.put(`api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,user)
+    }
+
+    //---------------USER ADMIN MANAGE -----------
+    FetchUserAdmin = (keyWord="")=>{
+        if(keyWord !== ""){
+            return this.get(`/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP15&tuKhoa=${keyWord}`)
+        }
+        else{
+            return  this.get(`/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP15`)
+        }
+    }
+
 }
 export const adminService = new AdminService()
