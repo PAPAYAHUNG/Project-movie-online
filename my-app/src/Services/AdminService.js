@@ -54,8 +54,14 @@ export class AdminService extends baseService{
             return this.get(`/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP15&tuKhoa=${keyWord}`)
         }
         else{
-            return  this.get(`/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP15`)
+            return this.get(`/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP15`)
         }
+    }
+    FetchTypeUser = ()=>{
+        return this.get('/api/QuanLyNguoiDung/LayDanhSachLoaiNguoiDung')
+    }
+    AddUserAtAdminPage = (newUser)=>{
+        return this.post('api/QuanLyNguoiDung/ThemNguoiDung',newUser)
     }
 
 }

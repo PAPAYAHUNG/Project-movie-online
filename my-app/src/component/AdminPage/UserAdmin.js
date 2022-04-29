@@ -3,9 +3,11 @@ import { Input, Space } from 'antd';
 import { AudioOutlined } from '@ant-design/icons';
 import { Table } from 'antd';
 import { adminService } from '../../Services/AdminService';
-
+import {useNavigate} from 'react-router-dom'
 
 export default function UserAdmin() {
+  const navigate=useNavigate()
+
   const { Search } = Input;
 
   const handleSearch = async (value = "") => {
@@ -110,58 +112,24 @@ export default function UserAdmin() {
       dataIndex: 'action',
       render: (text, record, index) => {
         return <Fragment>
-          <button className='btn btn-success'>Edit</button>
+          <button onClick={()=>{
+            localStorage.setItem('itemUser',JSON.stringify(record))
+          }} className='btn btn-success'>Edit</button>
           <button className='btn btn-danger ml-3'><i class="fa fa-trash-alt"></i></button>
         </Fragment>
       }
     },
   ];
 
-  const data = [
-    {
-      key: '1',
-      taiKhoan: 'John Brown',
-      id: 32,
-      hoTen: 'New York No. 1 Lake Park',
-      matKhau: "1234",
-      email: "x@gmail.com",
-      soDt: "0776463985",
-    },
-    {
-      key: '2',
-      taiKhoan: 'Jim Green',
-      id: 42,
-      hoTen: 'London No. 1 Lake Park',
-      matKhau: "1234",
-      email: "x@gmail.com",
-      soDt: "0776463985",
-    },
-    {
-      key: '3',
-      taiKhoan: 'Joe Black',
-      id: 32,
-      hoTen: 'Sidney No. 1 Lake Park',
-      matKhau: "1234",
-      email: "x@gmail.com",
-      soDt: "0776463985",
-    },
-    {
-      key: '4',
-      taiKhoan: 'Jim Red',
-      id: 32,
-      hoTen: 'London No. 2 Lake Park',
-      matKhau: "1234",
-      email: "x@gmail.com",
-      soDt: "0776463985",
-    },
-  ];
 
   function onChange(pagination, filters, sorter, extra) {
     console.log('params', pagination, filters, sorter, extra);
   }
   return (
-    <div className='container-fluid mt-4 '>
-      <h3>Add User</h3>
+    <div className='container-fluid my-4 '>
+      <button onClick={()=>{
+        navigate('add-user-admin')
+      }} className='btn btn-info mb-4' style={{fontSize:25}}>Add User</button>
       <Search
         placeholder="Search user"
         allowClear
@@ -175,3 +143,4 @@ export default function UserAdmin() {
     </div>
   )
 }
+
