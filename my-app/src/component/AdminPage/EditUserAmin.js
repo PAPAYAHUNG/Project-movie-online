@@ -2,6 +2,7 @@ import { useFormik } from 'formik'
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { UpdateUserAdmin } from '../../redux/action/AdminAction'
 import { adminService } from '../../Services/AdminService'
 
 export default function EditUserAmin() {
@@ -46,7 +47,7 @@ export default function EditUserAmin() {
         },
         onSubmit:  (values) => {
             console.log({ values })
-            
+            dispatch(UpdateUserAdmin(values,navigate))
           
             
         }
@@ -55,7 +56,7 @@ export default function EditUserAmin() {
   return (
     <div>
         <form onSubmit={formik.handleSubmit} className='container'>
-        <h3>Add User</h3>
+        <h3 className='text-success'>Edit User</h3>
         <div className='row mt-5'>
             <div className="form-group col-6">
                 <label >User name</label>
@@ -108,10 +109,12 @@ export default function EditUserAmin() {
 
         </div>
         <div className="form-group text-right">
-            <button type='submit' className='btn btn-success'>Add User </button>
+            <button type='submit' className='btn btn-success'>Save </button>
         </div>
         <div className="form-group ">
-            <button type='button' className='btn text-warning'><i className="fa fa-backward"></i> Back </button>
+            <button onClick={()=>{
+                navigate(-1)
+            }} type='button' className='btn text-warning'><i className="fa fa-backward"></i> Back </button>
         </div>
 
     </form>

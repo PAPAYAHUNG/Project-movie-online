@@ -1,48 +1,32 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 export default function Footer() {
+    let { listCinema } = useSelector(state => state.CinemaListReducer)
+    console.log({listCinema})
   return (
-    <div>
+    <div className='footer'>
+        <div className='footer-overlay'></div>
         <div className="container">
                 <div className="row">
                     <div className="col-4">
                         <div className="row">
-                            <div className="col-6">
+                            <div className="col-12 text-center">
                                 <ul>
                                     <li>Blog</li>
                                     <li>Blog</li>
                                 </ul>
                             </div>
-                            <div className="col-6">
-                                <ul>
-                                    <li>Check this content</li>
-                                    <li>Check this content</li>
-                                    <li>Check this content</li>
-                                    <li>Blog</li>
-                                </ul>
-                            </div>
+                          
                         </div>
                     </div>
                     <div className="col-4">
-                        <div className="row justify-content-center">
-                            <div className="col-3">
-                                <img className="img-fluid" style={{ borderRadius: '50%' }} src="./Images/bird-stuffed-toy-flightless-bird.png" alt='1234' />
+                        <div className="row justify-content-between">
+                            {listCinema?.map((item,index)=>{
+                                return <div key={index} className="col-4 mt-3">
+                                <img className="img-fluid" style={{ borderRadius: '50%',width:50 }} src={item.logo} alt='1234' />
                             </div>
-                            <div className="col-3">
-                                <img className="img-fluid" style={{ borderRadius: '50%' }} src="./Images/bird-stuffed-toy-flightless-bird.png" alt='1234' />
-                            </div>
-                            <div className="col-3">
-                                <img className="img-fluid" style={{ borderRadius: '50%' }} src="./Images/bird-stuffed-toy-flightless-bird.png" alt='1234' />
-                            </div>
-                            <div className="col-3">
-                                <img className="img-fluid" style={{ borderRadius: '50%' }} src="./Images/bird-stuffed-toy-flightless-bird.png" alt='1234' />
-                            </div>
-                            <div className="col-3">
-                                <img className="img-fluid" style={{ borderRadius: '50%' }} src="./Images/bird-stuffed-toy-flightless-bird.png" alt='1234' />
-                            </div>
-                            <div className="col-3">
-                                <img className="img-fluid" style={{ borderRadius: '50%' }} src="./Images/bird-stuffed-toy-flightless-bird.png" alt='1234' />
-                            </div>
+                            })}
                         </div>
                     </div>
                     <div className="col-4">

@@ -3,7 +3,8 @@ import { DOMAIN, TOKEN } from "../util/Settings/config";
 
 export class baseService {
     put = (url,model)=>{
-       let headers= {'Authorization': 'Bearer '+localStorage.getItem(TOKEN)}
+        let headers= {'Authorization': 'Bearer '+localStorage.getItem(TOKEN)}
+        console.log(headers)
         return axios.put(`${DOMAIN}/${url}`,model,{headers:headers})
     }
     post = (url,model)=>{

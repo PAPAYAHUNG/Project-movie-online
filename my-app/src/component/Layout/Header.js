@@ -33,23 +33,23 @@ export default function Header() {
             return <Fragment>
                 {location.pathname !== '/userInfo' ?
                     <NavLink to='/userInfo'>
-                        <button className="btn btn-success mr-3">{`${t('hello')}! ${userinfo.taiKhoan}`}</button>
+                        <button className="btn btn-success mr-3">{`${t('Hello')}! ${userinfo.taiKhoan}`}</button>
                     </NavLink> : ''}
-                <NavLink to='signIn'>
+                <NavLink to='SignIn'>
                     <button className="btn btn-warning mr-3" onClick={() => {
                         localStorage.removeItem('ACCESS_TOKEN_MOVIE')
                         localStorage.removeItem('USER_LOGIN_MOVIE')
-                    }}>{t('signout')}</button>
+                    }}>{t('Signout')}</button>
                 </NavLink>
             </Fragment>
         }
     }
     return (
-        <div>
-            <nav className="navbar navbar-expand-sm navbar-dark" style={{ backgroundColor: 'linkImagee3f2fd' }}>
-                <a className="navbar-brand" href="linkImage">
-                    <img src="./Images/PngItem_33985.png" alt='134' style={{ height: 60 }} />
-                </a>
+        <div className='header'>
+            <nav  className="  navbar navbar-expand-sm navbar-dark" style={{ backgroundColor: 'linkImagee3f2fd' }}>
+                <NavLink to="/" className="navbar-brand" href="Logo">
+                    <img src="./Images/PngItem_33985.png" alt='134' style={{ height: 50 }} />
+                </NavLink>
                 <button className="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="linkImagecollapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation" />
                 <div className="collapse navbar-collapse" id="collapsibleNavId">
                     <ul className="navbar-nav mr-auto mt-2 mt-lg-0 justify-content-center navbar-modified">
@@ -57,10 +57,10 @@ export default function Header() {
                             <a className="nav-link" href="linkImage">{t('Home')} <span className="sr-only">(current)</span></a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="linkImage">{t('contact')}</a>
+                            <a className="nav-link" href="linkImage">{t('Contact')}</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="linkImage">{t('news')}</a>
+                            <a className="nav-link" href="linkImage">{t('News')}</a>
                         </li>
 
                     </ul>

@@ -50,11 +50,12 @@ export const UpdateInfoEditFilmAdminAction = (formData, navigate) => {
             let { data } = await adminService.UpdateEditedFilmAdmin(formData)
             console.log({ data })
             alert('Update film succeed')
-            await dispatch(LoadListFilmAdminAction())
-            navigate('/admin/films-admin')
+            await navigate('/admin/films-admin')
+             dispatch(LoadListFilmAdminAction())
         } catch (err) {
-            console.log(err)
-            alert('Update film failed')
+            console.log(err.response.data)
+         
+            alert(`Update film failed -  ${err.response.data.content}`)
         }
     }
 }
@@ -109,19 +110,46 @@ export const UpdateNewUserAction = (userUpdated) => {
 }
 
 export const AddNewUserAdmin = (newUser, navigate) => {
-    console.log({newUser})
-    console.log({navigate})
+    console.log({ newUser })
+    console.log({ navigate })
     return async (dispatch) => {
         try {
             let { data } = await adminService.AddUserAtAdminPage(newUser)
             console.log({ data })
-           await alert('Add user succeed')
-            navigate('/admin/user-admin')
+            await alert('Add user succeed')
         } catch (err) {
             console.log(err.response.data)
             alert(`Add user Failed - ${err.response.data.content}`)
-
         }
 
+    }
+}
+export const UpdateUserAdmin = (updatedUser, navigate) => {
+    console.log({ updatedUser })
+    console.log({ navigate })
+    return async (dispatch) => {
+        try {
+            let { data } = await adminService.UpdateUserAtAdminPage(updatedUser)
+            console.log({ data })
+            await alert('Add user succeed')
+            navigate('/admin/user-admin')
+        } catch (err) {
+            console.log(err.response.data)
+            alert(`Update user Failed - ${err.response.data.content}`)
+        }
+
+    }
+}
+export const DeleteUserAdmin = (userName) => {
+    console.log({userName})
+    return async (dispatch) => {
+        try {
+            let { data } = await adminService.DeleteUserAtAdminPage(userName)
+            console.log({ data })
+             alert('Delete user succeed')
+        } catch (err) {
+            console.log(err.response.data)
+            alert(`Delete user Failed -This function have some errors as server`)
+        }
     }
 }

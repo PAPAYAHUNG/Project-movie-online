@@ -1,10 +1,10 @@
 {
-    "hello":"Hello",
-    "signup":"Signup",
-    "signin":"Signin",
+    "Hello":"Hello",
+    "Signup":"Signup",
+    "Signin":"Signin",
     "Home":"Home",
-    "contact":"Contact",
-    "news":"News",
-    "signout":"Log Out"
+    "Contact":"Contact",
+    "News":"News",
+    "Signout":"Log Out"
 
 }

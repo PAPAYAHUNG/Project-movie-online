@@ -12,7 +12,7 @@ export default function Carousels() {
   let dispatch = useDispatch()
   console.log(content)
   const contentStyle = {
-    height: '500px',
+    height: '700px',
     color: '#fff',
     lineHeight: '500px',
     textAlign: 'center',
@@ -24,6 +24,7 @@ export default function Carousels() {
       dispatch(getCarouselAction())
   }, [])
 
+  
   return (
     <div>
 
@@ -37,7 +38,7 @@ export default function Carousels() {
             </div>
           </div>
         })}
-      </Carousel>,
+      </Carousel>
 
     </div>
   )

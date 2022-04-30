@@ -29,16 +29,16 @@ export default function DetailOfFilms() {
 
 
     return (
-        <div>
+        <div className='uiBooking'>
             <div className='film-detail'>
                 <div>
-                    <div className="d-flex">
+                    {/* <div className="d-flex">
                         <h3 style={{ borderRight: '1px solid gray' }} className=" p-3 text-center font-weight-bold">Home</h3>
                         <h3 className="p-3 text-center font-weight-bold">{contentFilm.tenPhim}</h3>
-                    </div>
+                    </div> */}
                     <div className="row">
                         <div className="col-4">
-                            <img style={{ border: '3px solid gray' }} src={contentFilm.hinhAnh} className="img-fluid" alt="13214" onError={(e) => { e.target.onerror = null; e.target.src = 'https://picsum.photos/2000' }} />
+                            <img style={{ border: '3px solid gray',width:400 }} src={contentFilm.hinhAnh} className="img-fluid" alt="13214" onError={(e) => { e.target.onerror = null; e.target.src = 'https://picsum.photos/2000' }} />
                         </div>
                         <div className="col-8">
                             <h3>{contentFilm.tenPhim}</h3>

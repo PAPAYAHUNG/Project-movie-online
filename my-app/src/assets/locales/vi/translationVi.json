@@ -1,9 +1,9 @@
 {
-    "hello":"Xin chao",
-    "signup":"Đăng ký",
-    "signin":"Đăng nhập",
+    "Hello":"Xin chao",
+    "Signup":"Đăng ký",
+    "Signin":"Đăng nhập",
     "Home":"Trang chủ",
-    "contact":"Liên hệ",
-    "news":"Tin tức",
-    "signout":"Đăng xuất"
+    "Contact":"Liên hệ",
+    "News":"Tin tức",
+    "Signout":"Đăng xuất"
 }

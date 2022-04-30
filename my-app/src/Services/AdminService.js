@@ -63,6 +63,12 @@ export class AdminService extends baseService{
     AddUserAtAdminPage = (newUser)=>{
         return this.post('api/QuanLyNguoiDung/ThemNguoiDung',newUser)
     }
+    UpdateUserAtAdminPage = (updateUser)=>{
+        return this.put('api/QuanLyNguoiDung/CapNhatThongTinNguoiDung',updateUser)
+    }
+    DeleteUserAtAdminPage = (User)=>{
+        return this.delete(`api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${User}`)
+    }
 
 }
 export const adminService = new AdminService()

@@ -4,10 +4,13 @@ import { AudioOutlined } from '@ant-design/icons';
 import { Table } from 'antd';
 import { adminService } from '../../Services/AdminService';
 import {useNavigate} from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { DeleteUserAdmin } from '../../redux/action/AdminAction';
 
 export default function UserAdmin() {
   const navigate=useNavigate()
 
+  let dispacth = useDispatch()
   const { Search } = Input;
 
   const handleSearch = async (value = "") => {
@@ -114,8 +117,13 @@ export default function UserAdmin() {
         return <Fragment>
           <button onClick={()=>{
             localStorage.setItem('itemUser',JSON.stringify(record))
+            navigate('edit-user-admin')
           }} className='btn btn-success'>Edit</button>
-          <button className='btn btn-danger ml-3'><i class="fa fa-trash-alt"></i></button>
+
+          <button onClick={()=>{
+            console.log('taiKhoan',record.taiKhoan)
+              dispacth(DeleteUserAdmin(record.taiKhoan))
+          }} className='btn btn-danger ml-3'><i class="fa fa-trash-alt"></i></button>
         </Fragment>
       }
     },

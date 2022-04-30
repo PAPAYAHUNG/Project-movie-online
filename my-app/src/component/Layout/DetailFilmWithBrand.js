@@ -31,7 +31,8 @@ export default function DetailFilmWithBrand() {
     };
     const { tabPosition } = state;
     return (
-        <div className="container-Mod">
+        <div className="container-Mod-1 pt-4">
+            <div className='container-Mod-1-overlay'></div>
             <>
                 <Tabs tabPosition={tabPosition}>
                     {listCinema?.map((item, index) => {
@@ -48,8 +49,8 @@ export default function DetailFilmWithBrand() {
 
                                             <div className="col-9">
                                                 <div className="row">
-                                                    <h5>{item2.tenCumRap}</h5>
-                                                    <p>{item2.diaChi.length>30?`${item2.diaChi.slice(0,30)} ...`:item2.diaChi}</p>
+                                                    <p>{item2.tenCumRap}</p>
+                                                    <p>{item2.diaChi.length>40?`${item2.diaChi.slice(0,40)} ...`:item2.diaChi}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -58,7 +59,7 @@ export default function DetailFilmWithBrand() {
                                         {item2?.danhSachPhim.map((itemRight, index3) => {
                                                 
                                             return <Fragment key={index3}>
-                                                <div className="row mt-3" onClick={()=>{
+                                                <div className="row mt-3 item-to-book" onClick={()=>{
                                                   
                                                     console.log( itemRight)
                                                     
@@ -69,8 +70,8 @@ export default function DetailFilmWithBrand() {
                                                         {/* <img className="img-fluid logo-2d" src="./Images/2D-512.webp" alt='1234' /> */}
                                                     </NavLink >
                                                     <div className="col-10">
-                                                       <NavLink to={itemRight.maPhim.toString()}> <h5>{itemRight?.tenPhim}</h5> </NavLink>
-                                                        <div className="row justify-content-start">
+                                                       <NavLink to={itemRight.maPhim.toString()}> <h4 className='text-white'>{itemRight?.tenPhim}</h4> </NavLink>
+                                                        <div className="row justify-content-start ">
                                                             {itemRight?.lstLichChieuTheoPhim?.slice(0,6).map((timeShow, index) => {
                                                                 return <div key={index} className="timeClock d-flex align-items-center mr-4">
                                                                     {/* <h3 className='text-success'>{ timeShow.ngayChieuGioChieu.slice(-8).slice(0, 5)}</h3> */}
@@ -80,7 +81,7 @@ export default function DetailFilmWithBrand() {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <hr style={{border:'1px solid gray'}}/>
+                                                <hr style={{border:'1px solid white'}}/>
                                             </Fragment>
                                         })}
                                     </TabPane>

@@ -15,14 +15,15 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-
+import "swiper/css/navigation";
 
 // import required modules
-import { Pagination } from "swiper";
-
+import { Navigation, Pagination } from "swiper";
+import { useNavigate } from 'react-router-dom';
 
 
 export default function ListFilm() {
+    let navigate = useNavigate()
     const { TabPane } = Tabs;
 
     const callback = (key) => {
@@ -71,24 +72,13 @@ export default function ListFilm() {
         prevArrow: <SamplePrevArrow />
 
     };
-    const setting2 = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 6,
-        slidesToScroll: 6,
-        margin: "100px",
-        // centerPadding: '60px',
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />
 
-    };
     const renderFilms = (item, index) => {
         return <div className="col-2 mt-3 mx-2  itemFilmx" key={index}>
             <NavLink to={item.maPhim.toString()} onClick={() => {
                 console.log(item)
                 dispatch(getInfoFilmWhenClicked(item.maPhim))
-            }} className="card text-white bg-primary">
+            }} className="card text-white ">
                 <img style={{ height: 350 }} className="card-img-top" src={item.hinhAnh} alt='imga' />
                 <div className="card-body">
                     <h4 style={{ minHeight: 60 }} className="card-title">{item.tenPhim.length > 20 ? <span>{item.tenPhim.slice(0, 20)}...</span> : <span>{item.tenPhim}</span>}</h4>
@@ -132,10 +122,13 @@ export default function ListFilm() {
             <NavLink to={item.maPhim.toString()} onClick={() => {
                 console.log(item)
                 dispatch(getInfoFilmWhenClicked(item.maPhim))
-            }} className="card text-white bg-primary">
+            }} className="card text-white ">
                 <img style={{ height: 350 }} className="card-img-top" src={item.hinhAnh} alt='imga' />
                 <div className="card-body">
-                    <h4 style={{ minHeight: 60 }} className="card-title">{item.tenPhim.length > 20 ? <span>{item.tenPhim.slice(0, 20)}...</span> : <span>{item.tenPhim}</span>}</h4>
+                    <h4 style={{ minHeight: 60, color: 'white' }} className="card-title text-center">{item.tenPhim.length > 25 ? 
+                    <span>{item.tenPhim.slice(0, 25)}...</span> :
+                     <span>{item.tenPhim}</span>}</h4>
+
                     {/* <p className="card-text">Text</p> */}
                     <div className="d-flex justify-content-between">
                         <div>
@@ -155,24 +148,32 @@ export default function ListFilm() {
     }
 
 
-    return (
-        <div className='mb-5'>
 
-            <div className='list-audience'>
+    return (
+        <div className='all-item'>
+            <div className='overlay-all-item'></div>
+            <div className='list-audience pt-4'>
                 <div>
 
-                    <h2> Burning Tickets</h2>
+                    <h2 className='text-primary'>Trending</h2>
                     <Slider {...settings}>
                         {listFilms.filter(item => item.dangChieu).map((item, index) => {
-                            return <div className="flip-card" key={index}>
+                            return <div onClick={async () => {
+                                try {
+                                    await navigate(`${item.maPhim}`)
+                                    dispatch(getInfoFilmWhenClicked(item.maPhim))
+                                } catch (err) {
+                                    console.log(err)
+                                }
+                            }} className="flip-card" key={index}>
                                 <div className="flip-card-inner">
                                     <div className="flip-card-front">
                                         {/* <img src="img_avatar.png" alt="Avatar" style={{ width: 300, height: 300 }} /> */}
                                         <div className="  itemFilmxx" key={index}>
-                                            <div className="card text-white bg-primary">
-                                                <img style={{ height: 350 }} className="card-img-top" src={item.hinhAnh} alt='imga' />
+                                            <div className="card text-white ">
+                                                <img style={{ height: 350 }} className="card-img-top img-fluid" src={item.hinhAnh} alt='imga' />
                                                 <div className="card-body">
-                                                    <h4 style={{ minHeight: 60 }} className="card-title">{item.tenPhim}</h4>
+                                                    <h4 style={{ minHeight: 60 }} className="card-title text-white">{item.tenPhim}</h4>
                                                     {/* <p className="card-text">Text</p> */}
                                                     <div className="d-flex justify-content-between">
                                                         <div>
@@ -198,12 +199,18 @@ export default function ListFilm() {
                                         {/* <div style={{backgroundImage:`url("${item.hinhAnh}")`,backgroundPosition:'center',backgroundSize:'100%'}}></div> */}
 
                                         <img style={{ height: 486, width: '100%' }} src={item.hinhAnh} alt='imga' />
-                                        <div style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}></div>
+                                        <div className='modal-flip'></div>
 
                                         <div className='text-center' style={{ position: 'absolute', left: 0, bottom: 100, width: '100%' }}>
-                                            <h1 className='zIndex:10'>{item.tenPhim}</h1>
-                                            <button className='button-play' style={{ backgroundColor: 'unset', border: 'unset' }}> <i style={{ fontSize: 100 }} class="fa fa-play-circle "></i></button>
+                                            <h1 style={{ color: 'white' }} className='zIndex:10 text-center'>{item.tenPhim}</h1>
+                                            {/* <button className='button-play' style={{ backgroundColor: 'unset', border: 'unset' }}> <i style={{ fontSize: 100 }} class="fa fa-play-circle "></i></button> */}
+                                            <button className='button-play'
+                                                style={{ backgroundColor: 'unset', border: 'unset' }}>
+                                                <i style={{ fontSize: 100 }} class="fa fa-book-open"></i><br />
+                                                <h3 className='text-danger'>Booking now</h3>
+                                            </button>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -222,12 +229,16 @@ export default function ListFilm() {
                 <Tabs defaultActiveKey="1" onChange={callback}>
                     <TabPane className='xxx' tab="Hot Films" size={{ size: 'large' }} key="1">
                         <Swiper
-                            slidesPerView={5}
+                            slidesPerView={6}
                             spaceBetween={30}
+                            slidesPerGroup={6}
+                            loop={true}
+                            loopFillGroupWithBlank={true}
                             pagination={{
-                                clickable: true
+                                clickable: true,
                             }}
-                            modules={[Pagination]}
+                            navigation={true}
+                            modules={[Pagination, Navigation]}
                             className="mySwiper"
                         >
                             {listFilms.filter(item => item.hot).map((item, index) => {
@@ -246,13 +257,17 @@ export default function ListFilm() {
                     </TabPane> */}
                     <TabPane tab="On Showing" size='large' key="2">
                         <Swiper
-                            slidesPerView={5}
-                            spaceBetween={30}
-                            pagination={{
-                                clickable: true
-                            }}
-                            modules={[Pagination]}
-                            className="mySwiper"
+                             slidesPerView={6}
+                             spaceBetween={30}
+                             slidesPerGroup={6}
+                             loop={true}
+                             loopFillGroupWithBlank={true}
+                             pagination={{
+                                 clickable: true,
+                             }}
+                             navigation={true}
+                             modules={[Pagination, Navigation]}
+                             className="mySwiper"
                         >
                             {listFilms.filter(item => item.dangChieu).map((item, index) => {
                                 return renderFilms2(item, index)
@@ -266,12 +281,16 @@ export default function ListFilm() {
                     </TabPane>
                     <TabPane tab="Coming Soon" key="3">
                         <Swiper
-                            slidesPerView={5}
+                            slidesPerView={6}
                             spaceBetween={30}
+                            slidesPerGroup={6}
+                            loop={true}
+                            loopFillGroupWithBlank={true}
                             pagination={{
-                                clickable: true
+                                clickable: true,
                             }}
-                            modules={[Pagination]}
+                            navigation={true}
+                            modules={[Pagination, Navigation]}
                             className="mySwiper"
                         >
                             {listFilms.filter(item => item.sapChieu).map((item, index) => {
