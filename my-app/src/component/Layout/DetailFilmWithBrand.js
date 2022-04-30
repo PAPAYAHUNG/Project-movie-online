@@ -6,13 +6,15 @@ import { getInfoFilmWhenClicked, getListBrandCinema, getListDetailedFilms } from
 import { compose } from 'redux';
 import moment from 'moment'
 import { GET_INFO_CLICKED_FILM } from '../../redux/types/type-constant';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 export default function DetailFilmWithBrand() {
 
     const { TabPane } = Tabs;
     let [state, setState] = useState({
         tabPosition: 'left',
     })
+
+    let navigate = useNavigate()
 
     let dispatch = useDispatch()
 
@@ -59,11 +61,16 @@ export default function DetailFilmWithBrand() {
                                         {item2?.danhSachPhim.map((itemRight, index3) => {
                                                 
                                             return <Fragment key={index3}>
-                                                <div className="row mt-3 item-to-book" onClick={()=>{
-                                                  
-                                                    console.log( itemRight)
-                                                    
+                                                <div className="row mt-3 item-to-book" onClick={ async()=>{
+                                                    console.log( {itemRight})
+                                                    console.log( 'maPhim2',itemRight.maPhim)
+                                                  try{
+                                                   await navigate(`${itemRight.maPhim}`)
                                                    dispatch(getInfoFilmWhenClicked(itemRight.maPhim))
+                                                  }catch (err){
+                                                      console.log(err)
+                                                  }
+                                                    
                                                 }} >
                                                     <NavLink to={itemRight.maPhim.toString()} className="col-2 ">
                                                         <img src={itemRight.hinhAnh} alt={itemRight.hinhAnh} className='img-fluid logo-2d' onError={(e) => {e.target.onerror = null; e.target.src = 'https://picsum.photos/500'}} />

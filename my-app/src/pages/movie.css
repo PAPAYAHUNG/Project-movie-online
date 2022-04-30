@@ -6,14 +6,17 @@
 html {
   color: white;
 }
-.header{
+.header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 10;
-  background-image: linear-gradient(279deg , rgb(126, 50, 50,0.7),rgb(26, 154, 189));
-
+  background-image: linear-gradient(
+    279deg,
+    rgb(126, 50, 50, 0.7),
+    rgb(26, 154, 189)
+  );
 }
 .container-Mod {
   width: 90%;
@@ -70,7 +73,7 @@ html {
 .timeClock {
   min-height: 90px;
 }
-.item-to-book:hover{
+.item-to-book:hover {
   cursor: pointer;
   transform: translateY(-2px);
 }
@@ -81,7 +84,7 @@ html {
   top: 50%;
   transform: translateY(-50%);
 }
-.itemFilm{
+.itemFilm {
   min-width: 700px;
 }
 .itemFilm img {
@@ -90,7 +93,7 @@ html {
   transform: translateY(-50%);
 }
 .itemFilm p {
- margin: 0;
+  margin: 0;
 }
 
 ul {
@@ -98,10 +101,30 @@ ul {
   margin: 0;
   padding: 0;
 }
-
+/* -----------------Info---------- */
 .userinfo img {
 }
 
+.Info-hello {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-image: url("../assets/BG-image/555837.jpg");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.Info-hello-overlay{
+  background-color: rgb(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
 .monitorx {
   position: relative;
   margin: auto;
@@ -137,32 +160,31 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2px;
+  margin: 2px 5px;
 }
 .chair:hover {
   background-color: rgb(9, 104, 31);
   cursor: pointer;
 }
 /*---------------- Film shown Zone-------------- */
-.all-item{
+.overlay-all-item {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(0, 0, 0, 0.4);
+}
+.all-item {
   position: relative;
-  background-image: url('../assets/BG-image/papers.co-nh99-space-night-sky-star-dark-3840x2400.jpg');
-  background-size: 100%;
+  background-image: url("../assets/BG-image/papers.co-nh99-space-night-sky-star-dark-3840x2400.jpg");
+  background-size: cover;
   background-repeat: no-repeat;
-  /* background-position:; */
+}
 
-}
-.overlay-all-item{
-position: absolute;
-top: 0;
-bottom: 0;
-left: 0;
-width: 100%;
-background-color: rgb(0, 0, 0, 0.7);
-}
 .list-audience {
   width: 90%;
-  margin: 0 auto;
+  margin: 80px auto;
 }
 .listChair {
   /* column-count: 16; */
@@ -222,7 +244,6 @@ background-color: rgb(0, 0, 0, 0.7);
 .selecting-seat_by_other_big:hover {
   background-color: rgba(33, 14, 6, 0.471);
   cursor: no-drop;
-  
 }
 .selecting-seat_by_other_big {
   background-color: rgb(52, 9, 225);
@@ -263,11 +284,10 @@ cursor: no-drop;
   background-color: unset;
 }
 
-.text-booking :hover{
-   cursor: pointer;
+.text-booking :hover {
+  cursor: pointer;
   color: #0b94c5;
   transform: translateY(1px);
-
 }
 /* ----------------ADMIN PAGE-------------- */
 .sidebar-admin {
@@ -312,13 +332,13 @@ cursor: no-drop;
   flex-wrap: nowrap;
   -ms-overflow-style: none;
   /* Hides the scrollbar. */
-  
+
   -ms-scroll-chaining: none;
   /* Prevents Metro from swiping to the next tab or app. */
-  
+
   -ms-scroll-snap-type: mandatory;
   /* Forces a snap scroll behavior on your images. */
-  
+
   -ms-scroll-snap-points-x: snapInterval(0%, 100%);
   /* Defines the y and x intervals to snap to when scrolling. */
 }
@@ -335,9 +355,14 @@ cursor: no-drop;
 	margin: 0 20px;
 } */
 .ant-carousel .slick-dots {
-  margin-left: -8%;
+  margin-right: unset;
+  margin-left: unset;
 }
-.slick-prev{
+.ant-carousel .slick-dots li button {
+  height: 5px;
+}
+
+.slick-prev {
   left: -72px;
 }
 .slick-prev:before {
@@ -347,41 +372,39 @@ cursor: no-drop;
   font-size: 40px;
 }
 
-.slick-arrow.slick-prev{
-  background-color: transparent!important;
+.slick-arrow.slick-prev {
+  background-color: transparent !important;
 }
-.slick-next{
+.slick-next {
   right: -54px;
 }
 
-.slick-arrow.slick-next{
-  background-color: transparent!important;
+.slick-arrow.slick-next {
+  background-color: transparent !important;
 }
 
-
-
-.ant-tabs-nav-list{
+.ant-tabs-nav-list {
   color: rgb(217, 218, 233, 0.85);
 }
-.ant-tabs-nav:nth-child(2){
+.ant-tabs-nav:nth-child(2) {
   width: 770px;
 }
 
-.swiper-pagination-bullet{
+.swiper-pagination-bullet {
   height: 15px;
   width: 15px;
   opacity: 0.5;
   background: #eaecf6;
 }
-.swiper-pagination-bullet-active{
+.swiper-pagination-bullet-active {
   opacity: 1;
 }
 
-.swiper-wrapper{
+.swiper-wrapper {
   padding: 20px 0 60px 0;
 }
-.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal{
- bottom: 17px;
+.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+  bottom: 17px;
 }
 
 /* -----------------Flip cart------------ */
@@ -393,7 +416,7 @@ cursor: no-drop;
   /* border: 1px solid #f1f1f1; */
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
-.flip-card:hover{
+.flip-card:hover {
   cursor: pointer;
 }
 /* This container is needed to position the front and back side */
@@ -436,20 +459,19 @@ cursor: no-drop;
   background-color: rgba(0, 0, 0, 0.7);
   /* background-image: url(''); */
 }
-.flip-card-back:hover{
+.flip-card-back:hover {
   cursor: pointer;
 }
-.modal-flip{
+.modal-flip {
   background-color: rgb(0, 0, 0, 0.7);
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   bottom: 0;
-
 }
 .button-play {
-  color: rgb(250, 10, 10)
+  color: rgb(250, 10, 10);
 }
 .button-play:hover {
   cursor: pointer;
@@ -482,14 +504,19 @@ cursor: no-drop;
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
- 
+  margin-top: 75px;
 }
-/* .uiBooking{
-  position: absolute;
-  top:60px;
-  left: 0;
-  width: 100%;
-} */
+.uiBooking {
+}
+.uiBooking-brand {
+  padding: 30px 20px;
+  background-image: linear-gradient(173deg, #0c8293, #5d023c);
+}
+
+.font-color {
+  color: #01181f;
+}
+
 .swiper {
   width: 100%;
   height: 100%;
@@ -501,13 +528,13 @@ body {
   height: 100%;
 }
 
-.ant-tabs-content-left{
+.ant-tabs-content-left {
   max-height: 772px;
   /* overflow-y: scroll;
   overflow-x: hidden; */
-  width:100%;
-  overflow-x:hidden;
-  overflow-y:auto;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 #components-form-demo-control-ref .ant-btn {
@@ -521,47 +548,45 @@ body {
 
 /* Track */
 .ant-tabs-content-left::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
+  box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
 }
- 
+
 /* Handle */
 .ant-tabs-content-left::-webkit-scrollbar-thumb {
-  background: red; 
+  background: red;
   border-radius: 10px;
   z-index: 100;
-
 }
 
 /* Handle on hover */
 .ant-tabs-content-left::-webkit-scrollbar-thumb:hover {
-  background: #b30000; 
+  background: #b30000;
   z-index: 100;
-
 }
 
-.header-admin{
+.header-admin {
   /* position: fixed;
   top: 0;
    */
   padding: 20px;
-  background-color: rgba(12, 42, 99, 0.526) ;
+  background-color: rgba(12, 42, 99, 0.526);
   width: 100%;
 }
-.container-Mod-1{
-  background-image: url('../assets/BG-image/689398.jpg');
+.container-Mod-1 {
+  background-image: url("../assets/BG-image/689398.jpg");
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   background-position: center;
   position: relative;
 }
-.container-Mod-1-overlay{
-position: absolute;
-top: 0;
-right: 0;
-left: 0;
-bottom: 0;
-background-color: rgb(0, 0, 0, 0.7);
+.container-Mod-1-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgb(0, 0, 0, 0.7);
 }
 
 /* ----------------Footer------------- */
@@ -580,7 +605,15 @@ background-color: rgb(0, 0, 0, 0.7);
   bottom: 0;
   background-color: rgb(0, 0, 0, 0.7);
   } */
-  .footer{
-    background-image: linear-gradient(20deg , rgb(126, 50, 50),rgb(110 141 150));
-    padding: 30px 0;
-  }
+.footer {
+  background-image: linear-gradient(20deg, rgb(126, 50, 50), rgb(110 141 150));
+  padding: 30px 0;
+}
+
+.footer li:hover {
+  color: #0b94c5;
+  cursor: pointer;
+}
+.nav-item a {
+  font-size: 18px;
+}

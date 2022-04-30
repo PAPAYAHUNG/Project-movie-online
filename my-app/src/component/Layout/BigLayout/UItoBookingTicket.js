@@ -86,26 +86,26 @@ export default function UItoBookingTicket(props) {
                     <div className="overlay">
                         {/* Navbar */}
                         <nav className="navbar navbar-expand-md navbar-light  ">
-                            <a className="navbar-brand" href="#">
+                            <a className="navbar-brand text-white" href="/">
                                 <img style={{ width: 100, height: 60 }} src="./Images/PngItem_33985.png" alt="111" />
                             </a>
-                            <button className="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+                            <button className="navbar-toggler d-lg-none " type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon" />
                             </button>
                             <div className="collapse navbar-collapse" id="collapsibleNavId">
                                 <ul className="navbar-nav ml-auto mt-2 mt-lg-0 align-item-center">
                                     <li className="nav-item text-booking d-flex" >
                                         <NavLink to='/' className='mx-4 d-flex justify-content-center align-items-center' >
-                                            <h5>Home</h5>
+                                            <h5 className='text-white'>Home</h5>
                                         </NavLink >
                                     </li>
                                     <li className="nav-item text-booking">
                                         <NavLink to='/userInfo'  >
                                             <div className="userinfo ml-auto ">
                                                 <div className="d-flex align-items-center ">
-                                                    <h5>{userinfo.taiKhoan} </h5>
+                                                    <h5 className='text-primary'>{userinfo.taiKhoan} </h5>
 
-                                                    <h5 className='mx-3 bg-light d-flex justify-content-center align-items-center' style={{ width: 50, height: 50, borderRadius: "50%" }}>{userinfo.taiKhoan.toString().slice(0, 1)}</h5>
+                                                    <h5 className='mx-3 font-color bg-light d-flex justify-content-center align-items-center' style={{ width: 50, height: 50, borderRadius: "50%" }}>{userinfo.taiKhoan.toString().slice(0, 1)}</h5>
                                                 </div>
                                             </div>
                                         </NavLink >
@@ -186,18 +186,22 @@ export default function UItoBookingTicket(props) {
                                                             const action = updateSeatRealTime(chair, maLichChieu, userinfo.taiKhoan)
                                                             dispatch(action)
                                                         }}
+                                                            
                                                             disabled={chair.daDat || cssOnselectingSeatByOthers != ''}
-                                                            className={`chair ${cssSelected} 
+                                                            className={` chair ${cssSelected} 
                                                                                 ${cssVip} ${cssOnselectingSeat}
                                                                                 ${cssYourSelection} 
                                                                                 ${cssOnselectingSeatByOthers}`}>
                                                             {/* {chair.daDat ? cssYourSelection != '' ? <UserOutlined /> : 'X' : chair.tenGhe} */}
                                                             {renderSeatContent()}
                                                         </button>
-                                                            {(index + 1) % 16==0 ? <br/> : ''}
+                                                        {/* {(index+1)%16===0 ? console.log(index):""}
+                                                            {(index + 1) % 15===0 ? <br /> : ''} */}
                                                         </Fragment>
 
+                                                        
                                                     })}
+                                                    
                                                 </div>
 
                                             </div>

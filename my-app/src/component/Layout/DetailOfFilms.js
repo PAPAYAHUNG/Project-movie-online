@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import moment from 'moment'
 import { Tabs, Radio, Space } from 'antd';
@@ -14,9 +14,11 @@ export default function DetailOfFilms() {
 
     const [state, setState] = useState({ tabPosition: 'left' })
 
-    useEffect(()=>{
-        window.scrollTo(0,0)
+    useEffect(() => {
+        window.scrollTo(0, 0)
     })
+
+    const nodeRef = useRef(null)
 
     const changeTabPosition = e => {
         this.setState({ tabPosition: e.target.value });
@@ -30,45 +32,51 @@ export default function DetailOfFilms() {
 
     return (
         <div className='uiBooking'>
-            <div className='film-detail'>
+            <div className='film-detail  '>
                 <div>
-                    {/* <div className="d-flex">
-                        <h3 style={{ borderRight: '1px solid gray' }} className=" p-3 text-center font-weight-bold">Home</h3>
-                        <h3 className="p-3 text-center font-weight-bold">{contentFilm.tenPhim}</h3>
-                    </div> */}
-                    <div className="row">
-                        <div className="col-4">
-                            <img style={{ border: '3px solid gray',width:400 }} src={contentFilm.hinhAnh} className="img-fluid" alt="13214" onError={(e) => { e.target.onerror = null; e.target.src = 'https://picsum.photos/2000' }} />
+                    <div className="d-flex " style={{ height: 74 }}>
+                        {/* <h3 style={{ borderRight: '1px solid gray' }} className=" p-3 text-center font-weight-bold">Home</h3>
+                        <h3 className="p-3 text-center font-weight-bold">{contentFilm.tenPhim}</h3> */}
+                    </div>
+                    <div className="row pb-5">
+                        <div className="col-4 text-center">
+                            <div >
+                                <img style={{ border: '3px solid gray', width: 400 }} src={contentFilm.hinhAnh} className="img-fluid" alt="13214" onError={(e) => { e.target.onerror = null; e.target.src = 'https://picsum.photos/2000' }} />
+                            </div>
                         </div>
                         <div className="col-8">
-                            <h3>{contentFilm.tenPhim}</h3>
+                            <div className='container-fluid'>
+                            <h3 className='text-white'>{contentFilm.tenPhim}</h3>
                             <table className="table">
                                 <tbody>
                                     <tr>
-                                        <td>Showing date</td>
-                                        <td>{moment(contentFilm.ngayKhoiChieu).format('dd:hh:mm A')}</td>
+                                        <td className='text-white'>Showing date:</td>
+                                        <td className='text-white'>{moment(contentFilm.ngayKhoiChieu).format('dd:hh:mm A')}</td>
                                     </tr>
                                     <tr>
-                                        <td>Description</td>
-                                        <td>{contentFilm.moTa}</td>
+                                        <td className='text-white'>Description:</td>
+                                        <td className='text-white'>{contentFilm.moTa}</td>
                                     </tr>
                                     <tr>
-                                        <td>Actor</td>
-                                        <td>{contentFilm.danhGia}</td>
+                                        <td className='text-white'>Ranking:</td>
+                                        <td className='text-white'>{contentFilm.danhGia}</td>
                                     </tr>
 
 
                                 </tbody>
                             </table>
                             <div className='mt-5'>
-                                <button className="btn btn-success ">WATCH TRAILER</button>
-                                <button className="btn btn-success ml-4">TICKET NOW</button>
+                                <button disabled className="btn btn-success ">WATCH TRAILER</button>
+                                <button onClick={() => {
+                                    nodeRef.current.scrollIntoView({ behavior: 'smooth' })
+                                }} className="btn btn-success ml-4">TICKET NOW</button>
+                            </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className='row'>
+            <div ref={nodeRef} className='row uiBooking-brand'>
                 <Tabs tabPosition={tabPosition}>
                     {contentFilm.heThongRapChieu?.map((item, index) => {
                         console.log('rapchieu', item)
@@ -96,20 +104,20 @@ export default function DetailOfFilms() {
                                                 <h5>{itemRight.tenCumRap}</h5>
                                                 <p>{itemRight.diaChi}</p>
                                             </div>
-                                           
+
                                             <div className="row justify-content-start">
                                                 {itemRight.lichChieuPhim?.slice(0, 6).map((timeShow, index) => {
                                                     return <div key={index} className="timeClock d-flex align-items-center mr-4">
                                                         {/* <h3 className='text-success'>{ timeShow.ngayChieuGioChieu.slice(-8).slice(0, 5)}</h3> */}
-                                                       <NavLink to={`/booking${timeShow.maLichChieu}`} replace onClick={()=>{
-                                                           console.log("timeShow",timeShow)
-                                                           console.log({param})
-                                                           localStorage.setItem('maLichCHieu',timeShow.maLichChieu)
-                                                        //    dispatch(getListShownFilms(timeShow.maLichChieu))
-                                                       }}> 
-                                                           <h3 className='text-success'>{moment(timeShow.ngayChieuGioChieu).format('hh:mm A')}</h3>
-                                                       </NavLink>
-                                                    </div> 
+                                                        <NavLink to={`/booking${timeShow.maLichChieu}`} replace onClick={() => {
+                                                            console.log("timeShow", timeShow)
+                                                            console.log({ param })
+                                                            localStorage.setItem('maLichCHieu', timeShow.maLichChieu)
+                                                            //    dispatch(getListShownFilms(timeShow.maLichChieu))
+                                                        }}>
+                                                            <h3 className='text-success'>{moment(timeShow.ngayChieuGioChieu).format('hh:mm A')}</h3>
+                                                        </NavLink>
+                                                    </div>
                                                 })}
                                             </div>
 

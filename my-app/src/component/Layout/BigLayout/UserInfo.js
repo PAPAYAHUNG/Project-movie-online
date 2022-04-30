@@ -23,9 +23,10 @@ export default function UserInfo(props) {
     console.log(key);
   }
   return (
-    <div>
+    <div className='Info-hello'>
+      <div className='Info-hello-overlay'></div>
       <Header />
-      <h3 className='display-4 text-center mt-4'>Welcome {userInfo.hoTen}!!! </h3>
+      <h3 style={{marginTop:150, position:'relative'}} className='display-4 text-center text-white '>Welcome {userInfo.hoTen}!!! </h3>
       <div className='container-fluid'>
         <Tabs defaultActiveKey="1" onChange={callback}>
           <TabPane tab="User Info" key="1">

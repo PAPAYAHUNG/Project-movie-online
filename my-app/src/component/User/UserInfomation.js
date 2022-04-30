@@ -33,11 +33,12 @@ export default function UserInfomation() {
     let { user } = useSelector(state => state.UserManageReducer)
     console.log({ user })
     return (
-        <div>
-            <h3 className='text-center'>User Information</h3>
-            <table className="table">
+        <div style={{position:"relative", color:'white'}}>
+            <h3 className='text-center text-white'>User Information</h3>
+           <div className='container-fluid'>
+           <table className="table">
                 <thead>
-                    <tr>
+                    <tr className='text-white'>
                         <th>Full Name</th>
                         <th>Phone</th>
                         <th>Password</th>
@@ -46,7 +47,7 @@ export default function UserInfomation() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr className='text-white'>
                         <td>{user[0]?.hoTen}</td>
                         <td>{user[0]?.soDt}</td>
                         <td>{user[0]?.matKhau}</td>
@@ -56,9 +57,10 @@ export default function UserInfomation() {
 
                 </tbody>
             </table>
+           </div>
             <div class="form-group text-right">
                 <NavLink to="/userInfo/user-update">
-                    <button type='submit' style={{ textDecoration: "underline", color: 'green' }} className='btn '>Update ?</button>
+                    <button type='submit' style={{ textDecoration: "underline", color: 'green',fontSize:25,fontWeight:500 }} className='btn '>Update ?</button>
                 </NavLink>
             </div>
         </div>

@@ -14,16 +14,7 @@ const initialState = {
             "gioChieu": ""
         },
         "danhSachGhe": [
-            {
-                "maGhe": 63401,
-                "tenGhe": "01",
-                "maRap": 551,
-                "loaiGhe": "Thuong",
-                "stt": "01",
-                "giaVe": 150000.0,
-                "daDat": false,
-                "taiKhoanNguoiDat": null
-            },
+        
         ]
     },
     listSeatSelecting: [],

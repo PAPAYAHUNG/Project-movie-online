@@ -68,7 +68,7 @@ export default function Header() {
                 <div className="d-flex">
                     {renderLogin()}
 
-                    <Select defaultValue="en" style={{ width: 100 }} onChange={handleChange}>
+                    <Select defaultValue="en" style={{ width: 60 }} onChange={handleChange}>
                         <Option value="en">Eng</Option>
                         <Option value="chi">Chi</Option>
                         <Option value="vi">Vi</Option>

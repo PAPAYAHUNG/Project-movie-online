@@ -64,8 +64,8 @@ export default function ListFilm() {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 5,
-        slidesToScroll: 5,
+        slidesToShow: 6,
+        slidesToScroll: 6,
         margin: "100px",
         centerPadding: '60px',
         nextArrow: <SampleNextArrow />,
@@ -125,9 +125,9 @@ export default function ListFilm() {
             }} className="card text-white ">
                 <img style={{ height: 350 }} className="card-img-top" src={item.hinhAnh} alt='imga' />
                 <div className="card-body">
-                    <h4 style={{ minHeight: 60, color: 'white' }} className="card-title text-center">{item.tenPhim.length > 25 ? 
-                    <span>{item.tenPhim.slice(0, 25)}...</span> :
-                     <span>{item.tenPhim}</span>}</h4>
+                    <h4 style={{ minHeight: 60, color: 'white' }} className="card-title text-center">{item.tenPhim.length > 25 ?
+                        <span>{item.tenPhim.slice(0, 25)}...</span> :
+                        <span>{item.tenPhim}</span>}</h4>
 
                     {/* <p className="card-text">Text</p> */}
                     <div className="d-flex justify-content-between">
@@ -152,11 +152,13 @@ export default function ListFilm() {
     return (
         <div className='all-item'>
             <div className='overlay-all-item'></div>
-            <div className='list-audience pt-4'>
-                <div>
 
-                    <h2 className='text-primary'>Trending</h2>
+            <div className='list-audience pt-4'>
+             
+                   
+                    <h2 style={{ zIndex: 10000, opacity: 1,position:"relative" }} className='text-primary text-center'>Trending</h2>
                     <Slider {...settings}>
+
                         {listFilms.filter(item => item.dangChieu).map((item, index) => {
                             return <div onClick={async () => {
                                 try {
@@ -220,7 +222,7 @@ export default function ListFilm() {
 
                         })}
                     </Slider>
-                </div>
+               
             </div>
 
 
@@ -257,17 +259,17 @@ export default function ListFilm() {
                     </TabPane> */}
                     <TabPane tab="On Showing" size='large' key="2">
                         <Swiper
-                             slidesPerView={6}
-                             spaceBetween={30}
-                             slidesPerGroup={6}
-                             loop={true}
-                             loopFillGroupWithBlank={true}
-                             pagination={{
-                                 clickable: true,
-                             }}
-                             navigation={true}
-                             modules={[Pagination, Navigation]}
-                             className="mySwiper"
+                            slidesPerView={6}
+                            spaceBetween={30}
+                            slidesPerGroup={6}
+                            loop={true}
+                            loopFillGroupWithBlank={true}
+                            pagination={{
+                                clickable: true,
+                            }}
+                            navigation={true}
+                            modules={[Pagination, Navigation]}
+                            className="mySwiper"
                         >
                             {listFilms.filter(item => item.dangChieu).map((item, index) => {
                                 return renderFilms2(item, index)
