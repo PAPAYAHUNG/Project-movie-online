@@ -56,31 +56,31 @@ export default function EditUserAmin() {
   return (
     <div>
         <form onSubmit={formik.handleSubmit} className='container'>
-        <h3 className='text-success'>Edit User</h3>
+        <h2 className='text-black text-center'>Edit User</h2>
         <div className='row mt-5'>
             <div className="form-group col-6">
-                <label >User name</label>
+                <label style={{fontSize:25}} >User name</label>
                 <input type="text"
                     className="form-control" name="taiKhoan"
                     onChange={formik.handleChange}
                     value={formik.values.taiKhoan} />
             </div>
             <div className="form-group col-6">
-                <label >Email</label>
+                <label style={{fontSize:25}} >Email</label>
                 <input type="text"
                     className="form-control" name="email"
                     onChange={formik.handleChange}
                     value={formik.values.email} />
             </div>
             <div className="form-group col-6">
-                <label >Full name</label>
+                <label style={{fontSize:25}} >Full name</label>
                 <input type="text"
                     className="form-control" name="hoTen"
                     onChange={formik.handleChange}
                     value={formik.values.hoTen} />
             </div>
             <div className="form-group col-6">
-                <label >Phone</label>
+                <label style={{fontSize:25}} >Phone</label>
                 <input type="number"
                     className="form-control" name="soDt"
                     onChange={formik.handleChange}
@@ -88,14 +88,14 @@ export default function EditUserAmin() {
             </div>
 
             <div className="form-group col-6">
-                <label >Password</label>
+                <label style={{fontSize:25}} >Password</label>
                 <input type="text"
                     className="form-control" name="matKhau"
                     onChange={formik.handleChange}
                     value={formik.values.matKhau} />
             </div>
             <div className="form-group col-6">
-                <label >User Type</label>
+                <label style={{fontSize:25}} >User Type</label>
               <select className='form-control'
               name='maLoaiNguoiDung'
               onChange={formik.handleChange}

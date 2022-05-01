@@ -25,6 +25,7 @@ import Showtime from './component/AdminPage/Edit/Showtime';
 import UserInfomation from './component/User/UserInfomation';
 import AddUserAdmin from './component/AdminPage/AddUserAdmin';
 import EditUserAmin from './component/AdminPage/EditUserAmin';
+import Contact from './component/Layout/Contact';
 export const history = createBrowserHistory()
 
 const UItoBookingTicketLazy = lazy(() => import('./component/Layout/BigLayout/UItoBookingTicket'))
@@ -55,6 +56,7 @@ function App() {
           </Route>
           <Route path='/' element={<Homes />}>
             <Route path='/' element={<HomeLayOut />} />
+            <Route path='contact' element={<Contact />} />
             <Route path=':detailID' element={<UIWhenClicked />} />
           </Route>
           <Route path='signUp' element={<LoginForm />} />

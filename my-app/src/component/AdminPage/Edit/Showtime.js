@@ -131,7 +131,7 @@ export default function Showtime() {
     let filmParams = JSON.parse(localStorage.getItem('filmParams'))
 
     return <div className='mt-4'>
-        <h3 className='text-center'>Edit Showtime Films - <span className='text-primary'>{filmParams.tenPhim}</span></h3>
+        <h3 className='text-center'>Edit Showtime Films - <span className='text-danger'>{filmParams.tenPhim}</span></h3>
         <div className='row text-center mt-4'>
             <div className='col-4'>
                 <img src={filmParams.hinhAnh} style={{ width: 300 }} alt={filmParams.hinhAnh} />

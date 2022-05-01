@@ -9,6 +9,7 @@ import { UserOutlined } from '@ant-design/icons';
 import { Tabs } from 'antd';
 import moment from 'moment'
 import { connection } from '../../..'
+import Footer from '../Footer'
 
 export default function UItoBookingTicket(props) {
     let dispatch = useDispatch()
@@ -32,8 +33,8 @@ export default function UItoBookingTicket(props) {
     console.log(maLichChieu)
     let idTranfer = localStorage.getItem('maLichCHieu')
 
-    useEffect(()=>{
-        window.scrollTo(0,0)
+    useEffect(() => {
+        window.scrollTo(0, 0)
     })
 
     useEffect(() => {
@@ -133,75 +134,82 @@ export default function UItoBookingTicket(props) {
                                 <div className="timeToChoose pb-5">
                                     <div className="row">
                                         <div className="col-4">
-                                            <h4 className="ml-4">
+                                            <h4 className="ml-4 text-white">
                                                 {ngayChieu}-{gioChieu}
                                             </h4>
                                         </div>
-                                        <div className="col-4 text-center">
+                                        {/* <div className="col-4 text-center">
                                             <h4>Choosing time left</h4>
                                             <h1 className="text-warning">02:06</h1>
-                                        </div>
+                                        </div> */}
                                     </div>
                                     {/* main-zone */}
                                     <div className="row mt-4">
                                         <div className="col-7 text-center">
                                             <div className="monitorx"> </div>
-                                            <div className="list-audience">
-                                                <div className="row justify-content-between mt-4 listChair">
-                                                    {infoBooking?.danhSachGhe?.map((chair, index) => {
-                                                        let cssVip = chair.loaiGhe === 'Vip' ? 'vip-seat-big' : ''
-                                                        let cssSelected = chair.daDat ? 'selected-seat-big' : ''
-                                                        //Check seat is being book
-                                                        let indexOnselectingSeat = listSeatSelecting?.findIndex(item => item.maGhe === chair.maGhe)
-                                                        let cssOnselectingSeat = ''
-                                                        if (indexOnselectingSeat !== -1) {
-                                                            console.log('index', listSeatSelecting[indexOnselectingSeat])
-                                                            cssOnselectingSeat = 'selecting-seat-big'
-                                                        }
-                                                        //Check seat have been booked by ourself
-                                                        let cssYourSelection = chair.taiKhoanNguoiDat === userinfo.taiKhoan ? 'chosen-by-us' : ''
+                                            <div className="list-audience-2">
+                                                <div className="rowjustify-content-center  mt-4 listChair">
+                                                    {_.chunk(infoBooking?.danhSachGhe, 16).map((row, index) => {
+                                                        return <div className='row justify-content-between' key={`row-${index}`}>
+                                                            {row.map((chair, index) => {
+                                                                let cssVip = chair.loaiGhe === 'Vip' ? 'vip-seat-big' : ''
+                                                                let cssSelected = chair.daDat ? 'selected-seat-big' : ''
+                                                                //Check seat is being book
+                                                                let indexOnselectingSeat = listSeatSelecting?.findIndex(item => item.maGhe === chair.maGhe)
+                                                                let cssOnselectingSeat = ''
+                                                                if (indexOnselectingSeat !== -1) {
+                                                                    console.log('index', listSeatSelecting[indexOnselectingSeat])
+                                                                    cssOnselectingSeat = 'selecting-seat-big'
+                                                                }
+                                                                //Check seat have been booked by ourself
+                                                                let cssYourSelection = chair.taiKhoanNguoiDat === userinfo.taiKhoan ? 'chosen-by-us' : ''
 
-                                                        //Check seat have been selecting by others
-                                                        let cssOnselectingSeatByOthers = ''
-                                                        let indexOthers = listSeatSelectingByOthers.findIndex(item => item.maGhe === chair.maGhe)
-                                                        if (indexOthers !== -1) {
-                                                            cssOnselectingSeatByOthers = 'selecting-seat_by_other_big'
-                                                        }
+                                                                //Check seat have been selecting by others
+                                                                let cssOnselectingSeatByOthers = ''
+                                                                let indexOthers = listSeatSelectingByOthers.findIndex(item => item.maGhe === chair.maGhe)
+                                                                if (indexOthers !== -1) {
+                                                                    cssOnselectingSeatByOthers = 'selecting-seat_by_other_big'
+                                                                }
 
-                                                        //Render content of seat
-                                                        const renderSeatContent = () => {
-                                                            if (chair.daDat && cssYourSelection != '') {
-                                                                return <UserOutlined />
-                                                            }
-                                                            if (chair.daDat) {
-                                                                return 'X'
-                                                            }
-                                                            else {
-                                                                return chair.tenGhe
-                                                            }
-                                                        }
-                                                        return <Fragment  key={index}>
-                                                            <button onClick={() => {
-                                                            console.log(chair)
-                                                            const action = updateSeatRealTime(chair, maLichChieu, userinfo.taiKhoan)
-                                                            dispatch(action)
-                                                        }}
-                                                            
-                                                            disabled={chair.daDat || cssOnselectingSeatByOthers != ''}
-                                                            className={` chair ${cssSelected} 
+                                                                //Render content of seat
+                                                                const renderSeatContent = () => {
+                                                                    if (chair.daDat && cssYourSelection != '') {
+                                                                        return <UserOutlined />
+                                                                    }
+                                                                    if (chair.daDat) {
+                                                                        return 'X'
+                                                                    }
+                                                                    else {
+                                                                        return chair.tenGhe
+                                                                    }
+                                                                }
+                                                                return <Fragment key={index}>
+                                                                    <button onClick={() => {
+                                                                        console.log(chair)
+                                                                        const action = updateSeatRealTime(chair, maLichChieu, userinfo.taiKhoan)
+                                                                        dispatch(action)
+                                                                    }}
+
+                                                                        disabled={chair.daDat || cssOnselectingSeatByOthers != ''}
+                                                                        className={` chair ${cssSelected} 
                                                                                 ${cssVip} ${cssOnselectingSeat}
                                                                                 ${cssYourSelection} 
                                                                                 ${cssOnselectingSeatByOthers}`}>
-                                                            {/* {chair.daDat ? cssYourSelection != '' ? <UserOutlined /> : 'X' : chair.tenGhe} */}
-                                                            {renderSeatContent()}
-                                                        </button>
-                                                        {/* {(index+1)%16===0 ? console.log(index):""}
+                                                                        {/* {chair.daDat ? cssYourSelection != '' ? <UserOutlined /> : 'X' : chair.tenGhe} */}
+                                                                        {renderSeatContent()}
+                                                                    </button>
+                                                                    {/* {(index+1)%16===0 ? console.log(index):""}
                                                             {(index + 1) % 15===0 ? <br /> : ''} */}
-                                                        </Fragment>
+                                                                </Fragment>
 
-                                                        
+
+                                                            })}
+                                                        </div>
                                                     })}
-                                                    
+
+
+
+
                                                 </div>
 
                                             </div>
@@ -209,27 +217,27 @@ export default function UItoBookingTicket(props) {
                                                 <div className="row justify-content-between">
                                                     <div className="d-flex align-items-center">
                                                         <div className="normal-seat mx-2" />
-                                                        <h5>Normal seat</h5>
+                                                        <h5 className='text-white'>Normal seat</h5>
                                                     </div>
                                                     <div className="d-flex align-items-center">
                                                         <div className="vip-seat mx-2" />
-                                                        <h5>Vip seat</h5>
+                                                        <h5 className='text-white'>Vip seat</h5>
                                                     </div>
                                                     <div className="d-flex align-items-center">
                                                         <div className="selecting-seat mx-2" />
-                                                        <h5>Selecting seat</h5>
+                                                        <h5 className='text-white'>Selecting seat</h5>
                                                     </div>
                                                     <div className="d-flex align-items-center">
                                                         <div className="selected-seat mx-2 text-danger"></div>
-                                                        <h5>Your selected seat</h5>
+                                                        <h5 className='text-white'>Your selected seat</h5>
                                                     </div>
                                                     <div className="d-flex align-items-center">
                                                         <div className="other-selected-seat mx-2 ">X</div>
-                                                        <h5>Seleteted by others</h5>
+                                                        <h5 className='text-white'>Seleteted by others</h5>
                                                     </div>
                                                     <div className="d-flex align-items-center">
                                                         <div className="selecting-seat_by_other mx-2 ">X</div>
-                                                        <h5>Selecting by others</h5>
+                                                        <h5 className='text-white'>Selecting by others</h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -237,26 +245,26 @@ export default function UItoBookingTicket(props) {
                                         {/* Bill zone */}
                                         <div className="col-5">
                                             <div className="bill-zone">
-                                                <h3 className="p-4 text-center">{tenPhim}</h3>
+                                                <h3 className="p-4 text-center text-white">{tenPhim}</h3>
                                                 <table className="table">
                                                     <tbody>
                                                         <tr>
-                                                            <td className="p-3">Time on show</td>
-                                                            <td className="p-3">{ngayChieu}
-                                                                <span className="text-warning font-weight-bold">{gioChieu}</span>
+                                                            <td className="p-3 text-white">Time on show</td>
+                                                            <td className="p-3 text-white">{ngayChieu}
+                                                                <span className="text-warning font-weight-bold"> - {gioChieu}</span>
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td className="p-3">Cenima</td>
-                                                            <td className="p-3"> {tenCumRap} </td>
+                                                            <td className="p-3 text-white">Cenima</td>
+                                                            <td className="p-3 text-white"> {tenCumRap} </td>
                                                         </tr>
                                                         <tr>
-                                                            <td className="p-3">Theater Cup</td>
-                                                            <td className="p-3">{tenRap}</td>
+                                                            <td className="p-3 text-white">Theater Cup</td>
+                                                            <td className="p-3 text-white">{tenRap}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td className="p-3">Seat</td>
-                                                            <td className="p-3">
+                                                            <td className="p-3 text-white">Seat</td>
+                                                            <td className="p-3 text-white">
                                                                 <div>
                                                                     {_.sortBy(listSeatSelecting, 'stt').map((item, index) => {
                                                                         return <span key={index} style={{ position: 'relative', top: '50%' }} className="text-warning font-weight-bold p-2">{item.tenGhe}</span>
@@ -310,13 +318,13 @@ export default function UItoBookingTicket(props) {
                     </div>
                 </div>
                 {/* footer */}
-                <footer>
+                {/* <footer>
                     <div className="row pt-5 pb-5">
                         <div className="col-8 text-center ">
                             <div style={{ width: '50%', margin: 'auto' }}>
                                 <img src="./Images/PngItem_33985.png" style={{ width: 100 }} alt="111" />
                                 <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, distinctio!</h5>
-                                <p>Contact: (+84) 39 454 777</p>
+                                <p>Contact: (+84) 776 463 985</p>
                             </div>
                         </div>
                         <div className="col-4">
@@ -338,7 +346,9 @@ export default function UItoBookingTicket(props) {
                                 </div>
                             </div>
                         </div>
-                    </div></footer>
+                    </div></footer> */}
+
+                <Footer />
             </div>
         </div>
 
@@ -355,11 +365,11 @@ export function BookingUI(props) {
         dispatch(getHistoryUser(userinfo.taiKhoan))
 
     }, [])
-    return <section className="text-gray-600 body-font">
+    return <section style={{ position: "relative", minHeight: 650 }} className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
-            <div className="flex flex-col text-center w-full mb-20">
-                <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Booking History</h1>
-                <h4 className="lg:w-2/3 mx-auto leading-relaxed text-base">Please check your booking status!</h4>
+            <div className="flex flex-col text-center w-full mb-20 text-white">
+                <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 text-white">Booking History</h1>
+                <h4 className="lg:w-2/3 mx-auto leading-relaxed text-base text-success">Please check your booking status!</h4>
 
             </div>
 
@@ -367,7 +377,7 @@ export function BookingUI(props) {
         <div className='container'>
             <table className="table">
                 <thead>
-                    <tr>
+                    <tr className='text-white'>
                         <th>Movie Name</th>
                         <th>Showing Date</th>
                         <th>Cinema</th>
@@ -377,7 +387,7 @@ export function BookingUI(props) {
                 </thead>
                 <tbody>
                     {userHistory.thongTinDatVe?.map((item, index) => {
-                        return <tr key={index}>
+                        return <tr className='text-white' key={index}>
                             <td>{item.tenPhim}</td>
                             <td>{moment(item.ngayDat).format('YYYY-MM-DD HH-MM A')}</td>
                             <td>{item.danhSachGhe[0].tenHeThongRap}</td>

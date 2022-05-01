@@ -12,7 +12,7 @@ export default function Loading() {
             }}
                 className='d-flex justify-content-center align-items-center'
             >
-                <div><h1>Loading...</h1></div>
+                <div><h1 className='text-white'>Loading...</h1></div>
             </div>
             : ''
     )

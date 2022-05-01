@@ -53,14 +53,14 @@ export default function Header() {
                 <button className="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="linkImagecollapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation" />
                 <div className="collapse navbar-collapse" id="collapsibleNavId">
                     <ul className="navbar-nav mr-auto mt-2 mt-lg-0 justify-content-center navbar-modified">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="linkImage">{t('Home')} <span className="sr-only">(current)</span></a>
+                        <li className="nav-item ">
+                            <NavLink to="/" className="nav-link" >{t('Home')} </NavLink>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="linkImage">{t('Contact')}</a>
+                            <NavLink to="/contact" className="nav-link" >{t('Contact')}</NavLink>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="linkImage">{t('News')}</a>
+                            <NavLink to="news" className="nav-link" >{t('News')}</NavLink>
                         </li>
 
                     </ul>

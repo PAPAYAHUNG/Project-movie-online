@@ -85,7 +85,8 @@ html {
   transform: translateY(-50%);
 }
 .itemFilm {
-  min-width: 700px;
+  width: 700px;
+
 }
 .itemFilm img {
   position: relative;
@@ -117,7 +118,7 @@ ul {
   background-repeat: no-repeat;
 }
 
-.Info-hello-overlay{
+.Info-hello-overlay {
   background-color: rgb(0, 0, 0, 0.7);
   position: absolute;
   top: 0;
@@ -184,6 +185,10 @@ ul {
 
 .list-audience {
   width: 90%;
+  margin: auto;
+}
+.list-audience-2 {
+  width: 100%;
   margin: 80px auto;
 }
 .listChair {
@@ -270,7 +275,7 @@ cursor: no-drop;
 }
 .bookingUI {
   background-image: url(../assets/BG-image/Marvel-Thor-Wallpapers.jpg);
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-size: 100%;
   /* position: fixed; */
   top: 0;
@@ -306,6 +311,9 @@ cursor: no-drop;
   background-color: cadetblue;
   cursor: pointer;
 }
+.active1 li{
+  background-color: cadetblue;
+}
 .dropdown button {
   width: 100%;
 }
@@ -315,11 +323,7 @@ cursor: no-drop;
 .isShown {
   display: block !important;
 }
-.mainzone-admin {
-  position: absolute;
-  left: 250px;
-  right: 0;
-}
+
 .itemFilmx:hover {
   cursor: pointer;
   transform: scale(1.02);
@@ -361,7 +365,9 @@ cursor: no-drop;
 .ant-carousel .slick-dots li button {
   height: 5px;
 }
-
+.ant-table table {
+  font-size: 20px;
+}
 .slick-prev {
   left: -72px;
 }
@@ -565,13 +571,25 @@ body {
   z-index: 100;
 }
 
+.mainzone-admin {
+  position: absolute;
+  left: 250px;
+  right: 0;
+}
 .header-admin {
-  /* position: fixed;
-  top: 0;
-   */
+  border-radius: 10px;
+  margin: 0 20px;
   padding: 20px;
   background-color: rgba(12, 42, 99, 0.526);
-  width: 100%;
+}
+.outlet-admin {
+  border-radius: 10px;
+  padding: 20px 0;
+  margin: 20px 20px;
+  background-color: rgba(12, 42, 99, 0.526);
+}
+.outlet-manage-film-admin {
+  margin: 20px 20px;
 }
 .container-Mod-1 {
   background-image: url("../assets/BG-image/689398.jpg");
@@ -616,4 +634,45 @@ body {
 }
 .nav-item a {
   font-size: 18px;
+}
+/* -----------Contact--------- */
+.tn-emails-and-phone-numbers img{
+  width: 20px;
+}
+.image img{
+  width: 80px;
+}
+.tn-section{
+  margin-top: 75px;
+  padding-top: 30px ;
+}
+.tn-section-header{
+  text-decoration: underline rgb(237, 175, 15);
+}
+.tn-emails{
+  display: flex;
+  align-items: center;
+}
+.tn-mail-icon{
+  margin-right: 10px;
+}
+.tn-block{
+  padding: 15px;
+  border-bottom: 1px rgb(27, 86, 128) solid;
+}
+.tn-section-content-1{
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+.tn-section-content-1 li h5{
+  text-align: center;
+}
+.tn-section-content-1 li{
+  text-align: center;
+  padding: 15px;
+}
+
+.navbar-dark.navbar-nav.nav-link.active{
+  color: gold;
 }

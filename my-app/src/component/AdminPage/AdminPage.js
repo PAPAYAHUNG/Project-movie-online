@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react'
 import _ from 'lodash'
 import UserInfo from '../Layout/BigLayout/UserInfo'
 import { NavLink, Outlet } from 'react-router-dom'
-
+import logo from '../../assets/BG-image/PngItem_33985.png'
 export default function AdminPage() {
     //Check user login or not from local storage
     let userinfo = JSON.parse(localStorage.getItem("USER_LOGIN_MOVIE"))
@@ -14,33 +14,37 @@ export default function AdminPage() {
             <div className="adminPage">
                 <div className="sidebar-admin">
                     <div className>
-                        <img src="./Images/PngItem_33985.png" style={{ width: 150 }} alt="AdminImage" />
-                        <ul>
-                            <NavLink to="user-admin">
-                                <li>
+                        <img className='mt-4 ml-4' src={logo} style={{ height:80 }} alt="AdminImage" />
+                        <ul className='mt-4'>
+                            <NavLink to="user-admin" 
+                            className={({ isActive }) => (isActive ? 'active1' : '')}>
+                                <li style={{fontSize:20}} className='text-white'>
                                     <i className="fa fa-user" /> User
                                 </li>
                             </NavLink>
-                            <NavLink to="films-admin" onClick={() => {
-                                setIshown(prevCheck => !prevCheck)
-                            }}>
-                                <li>
+                            <NavLink to="films-admin"
+                                className={({ isActive }) => (isActive ? 'active1' : '')}
+                                onClick={() => {
+                                    setIshown(prevCheck => !prevCheck)
+                                }}>
+                                <li style={{fontSize:20}} className='text-white'>
                                     <i className="fa fa-film" /> Films
                                 </li>
                             </NavLink>
 
                             {isShown ? <Fragment>
-                                <NavLink to="add-films">
-                                    <li className="ml-3"><i className="fa fa-plus" /> Add more</li>
+                                <NavLink to="add-films"
+                                    className={({ isActive }) => (isActive ? 'active1' : '')}>
+                                    <li style={{fontSize:20}} className="ml-3 text-white"><i className="fa fa-plus" /> Add more</li>
                                 </NavLink>
                             </Fragment> : ""}
 
-                            <li><i className="fa fa-tv" /> Show more </li>
+                            {/* <li><i className="fa fa-tv" /> Show more </li> */}
                         </ul>
                     </div>
                 </div>
                 <div className="mainzone-admin ">
-                    <div className='cover-admin container-fluid'>
+                    <div className='cover-admin mt-3'>
                         <div className='header-admin text-right'>
                             {!_.isEmpty(userinfo) ? <Fragment>
                                 <div className='d-flex justify-content-end'>
@@ -59,7 +63,7 @@ export default function AdminPage() {
                         </div>
 
                     </div>
-                    <div className="container-fluid">
+                    <div className=" outlet-admin   ">
                         <Outlet />
                     </div>
                 </div>

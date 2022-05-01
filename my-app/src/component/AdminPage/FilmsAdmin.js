@@ -153,7 +153,7 @@ export default function FilmsAdmin() {
 
   };
   return (
-    <div className='mt-4'>
+    <div className='mt-4 outlet-manage-film-admin'>
       <Search
         placeholder="Input search text"
         allowClear

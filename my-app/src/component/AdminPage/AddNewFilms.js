@@ -122,7 +122,7 @@ export default function AddNewFilms() {
 
     return (
         <div className='mt-5'>
-            <h3 className='display-4'>Add film</h3>
+            <h3 className='display-4 text-center'>Add film</h3>
             <Form
                 onSubmitCapture={formik.handleSubmit}
                 labelCol={{

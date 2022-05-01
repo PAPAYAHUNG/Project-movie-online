@@ -102,6 +102,8 @@ export const UpdateNewUserAction = (userUpdated) => {
         try {
             let { data } = await adminService.UpdateUserInfoNormal(userUpdated)
             console.log({ data })
+            alert('Update user succeed')
+            
         } catch (err) {
             console.log(err.response.data)
         }
