@@ -1,0 +1,75 @@
+/* ------HEADER---------- */
+@media screen and (max-width: 992px) {
+  .width-100 {
+    width: 100%;
+  }
+  .nav-item {
+    border-bottom: 1px gray solid;
+  }
+  .nav-item:hover {
+    background-color: cadetblue;
+  }
+}
+
+/* ----------Carousel---------- */
+@media screen and (min-width: 1400px) {
+  .carousel-ant-mod {
+    height: 800px;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .carousel-ant-mod {
+    height: 700px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .carousel-ant-mod {
+    height: 600px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .carousel-ant-mod {
+    height: 500px;
+  }
+}
+@media screen and (max-width: 786px) {
+  .carousel-ant-mod {
+    height: 350px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .carousel-ant-mod {
+    height: 300px;
+  }
+}
+
+/* ------------List Films ------------- */
+
+
+@media screen and (max-width: 1200px) {
+  .slick-prev {
+    left: -38px;
+  }
+
+  .slick-next {
+    right: -25px;
+  }
+
+  
+}
+@media screen and (max-width: 576px) {
+    .card-img-top {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 320px;
+    }
+    .slick-prev {
+      left: -13px;
+    }
+  
+    .slick-next {
+      right: 16px;
+    }
+  
+  }

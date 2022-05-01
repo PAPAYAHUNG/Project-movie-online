@@ -26,6 +26,8 @@ import UserInfomation from './component/User/UserInfomation';
 import AddUserAdmin from './component/AdminPage/AddUserAdmin';
 import EditUserAmin from './component/AdminPage/EditUserAmin';
 import Contact from './component/Layout/Contact';
+import News from './component/Layout/News';
+import '../src/pages/movieResponsive.css'
 export const history = createBrowserHistory()
 
 const UItoBookingTicketLazy = lazy(() => import('./component/Layout/BigLayout/UItoBookingTicket'))
@@ -57,6 +59,7 @@ function App() {
           <Route path='/' element={<Homes />}>
             <Route path='/' element={<HomeLayOut />} />
             <Route path='contact' element={<Contact />} />
+            <Route path='news' element={<News />} />
             <Route path=':detailID' element={<UIWhenClicked />} />
           </Route>
           <Route path='signUp' element={<LoginForm />} />

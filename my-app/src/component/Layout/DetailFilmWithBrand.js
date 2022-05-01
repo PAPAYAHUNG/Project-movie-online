@@ -35,7 +35,7 @@ export default function DetailFilmWithBrand() {
     return (
         <div className="container-Mod-1 pt-4">
             <div className='container-Mod-1-overlay'></div>
-            <>
+           <div style={{position:"relative"}}>
                 <Tabs tabPosition={tabPosition}>
                     {listCinema?.map((item, index) => {
 
@@ -100,7 +100,8 @@ export default function DetailFilmWithBrand() {
                     })}
 
                 </Tabs>
-            </>
+                </div>
+       
 
 
 

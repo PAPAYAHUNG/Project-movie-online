@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import { NavLink, useLocation, useParams } from 'react-router-dom'
 import { Select } from 'antd';
 import { useTranslation } from 'react-i18next';
@@ -12,6 +12,12 @@ export default function Header() {
     }
     let location = useLocation()
     console.log({ location })
+
+    //Add state to manage Width of class button group Responsive
+    const [isClicked,setIsCLicked] = useState(false)
+    let cssWidth= isClicked? "width-100":""
+    
+
 
     //Check user login or not from local storage
     let userinfo = JSON.parse(localStorage.getItem("USER_LOGIN_MOVIE"))
@@ -46,35 +52,53 @@ export default function Header() {
     }
     return (
         <div className='header'>
-            <nav  className="  navbar navbar-expand-sm navbar-dark" style={{ backgroundColor: 'linkImagee3f2fd' }}>
+            <nav className="  navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: 'linkImagee3f2fd' }}>
                 <NavLink to="/" className="navbar-brand" href="Logo">
                     <img src="./Images/PngItem_33985.png" alt='134' style={{ height: 50 }} />
                 </NavLink>
-                <button className="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="linkImagecollapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation" />
+                <button className="navbar-toggler d-lg-none"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapsibleNavId"
+                    aria-controls="collapsibleNavId"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation" 
+                    onClick={()=>{
+                        setIsCLicked(prev=>!prev)
+                    }}><i class="fa fa-list"></i></button>
                 <div className="collapse navbar-collapse" id="collapsibleNavId">
                     <ul className="navbar-nav mr-auto mt-2 mt-lg-0 justify-content-center navbar-modified">
-                        <li className="nav-item ">
-                            <NavLink to="/" className="nav-link" >{t('Home')} </NavLink>
+                        <li className="nav-item" >
+                            <NavLink to="/" className="nav-link d-block" >{t('Home')} </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="/contact" className="nav-link" >{t('Contact')}</NavLink>
+                            <NavLink to="/contact" className="nav-link d-block" >{t('Contact')}</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="news" className="nav-link" >{t('News')}</NavLink>
+                            <NavLink to="/news" className="nav-link d-block" >{t('News')}</NavLink>
+                        </li>
+                        <li className="nav-item d-block d-lg-none">
+                            <Select defaultValue="en" style={{ width: 100 }} onChange={handleChange}>
+                                <Option value="en">Eng</Option>
+                                <Option value="chi">Chi</Option>
+                                <Option value="vi">Vi</Option>
+                            </Select>
                         </li>
 
                     </ul>
                 </div>
-                <div className="d-flex">
+                <div  className={`d-flex justify-content-end ${cssWidth}`}>
                     {renderLogin()}
 
-                    <Select defaultValue="en" style={{ width: 60 }} onChange={handleChange}>
+                    <Select className='d-none d-lg-block' defaultValue="en" style={{ width: 80 }} onChange={handleChange}>
                         <Option value="en">Eng</Option>
                         <Option value="chi">Chi</Option>
                         <Option value="vi">Vi</Option>
                     </Select>
                 </div>
             </nav>
+            
+
         </div>
     )
 }

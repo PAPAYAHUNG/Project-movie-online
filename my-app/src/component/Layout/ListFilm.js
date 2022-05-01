@@ -69,7 +69,57 @@ export default function ListFilm() {
         margin: "100px",
         centerPadding: '60px',
         nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />
+        prevArrow: <SamplePrevArrow />,
+        responsive: [{
+            breakpoint: 1600,
+            settings: {
+              slidesToShow: 5,
+              slidesToScroll: 5,
+              // centerMode: true,
+      
+            }
+      
+          }, {
+            breakpoint: 1200,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 4,
+              dots: true,
+              infinite: true,
+      
+            }
+          },  {
+            breakpoint: 992,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3,
+              dots: true,
+              infinite: true,
+              autoplay: true,
+              autoplaySpeed: 2000,
+            }
+          },  {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              dots: true,
+              infinite: true,
+              autoplay: true,
+              autoplaySpeed: 2000,
+            }
+         
+          },  {
+            breakpoint: 576,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              dots: true,
+              infinite: true,
+              autoplay: true,
+              autoplaySpeed: 2000,
+            },
+          }]
 
     };
 

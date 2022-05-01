@@ -16,12 +16,14 @@ export default function Carousels() {
   let dispatch = useDispatch()
   console.log(content)
   const contentStyle = {
-    height: '700px',
+    // minHeight:"300px",
+    
     color: '#fff',
     lineHeight: '500px',
     textAlign: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '100%',
+    backgroundSize: "100%",
+    // backgroundSize: "cover",
     backgroundPosition:'bottom',
     cursor:'pointer',
   };
@@ -37,7 +39,7 @@ export default function Carousels() {
       <Carousel autoplay>
         {content.map((item, index) => {
           return <div key={index}>
-            <div style={{ ...contentStyle, backgroundImage: `url(${item.hinhAnh})` }}
+            <div className='carousel-ant-mod' style={{ ...contentStyle, backgroundImage: `url(${item.hinhAnh})` }}
             onClick={ async()=>{
               await navigate(`${item.maPhim}`)
                dispatch(getInfoFilmWhenClicked(item.maPhim))
