@@ -172,7 +172,7 @@ export default function ListFilm() {
             <NavLink to={item.maPhim.toString()} onClick={() => {
                 console.log(item)
                 dispatch(getInfoFilmWhenClicked(item.maPhim))
-            }} className="card text-white ">
+            }} className="card item-film-below text-white ">
                 <img style={{ height: 350 }} className="card-img-top" src={item.hinhAnh} alt='imga' />
                 <div className="card-body">
                     <h4 style={{ minHeight: 60, color: 'white' }} className="card-title text-center">{item.tenPhim.length > 25 ?
@@ -281,9 +281,9 @@ export default function ListFilm() {
                 <Tabs defaultActiveKey="1" onChange={callback}>
                     <TabPane className='xxx' tab="Hot Films" size={{ size: 'large' }} key="1">
                         <Swiper
-                            slidesPerView={6}
+                            // slidesPerView={6}
+                            // slidesPerGroup={6}
                             spaceBetween={30}
-                            slidesPerGroup={6}
                             loop={true}
                             loopFillGroupWithBlank={true}
                             pagination={{
@@ -292,6 +292,41 @@ export default function ListFilm() {
                             navigation={true}
                             modules={[Pagination, Navigation]}
                             className="mySwiper"
+                            breakpoints={{
+                                1630: {
+                                  width: 1630,
+                                  slidesPerView: 6,
+                                  slidesPerGroup:6,
+                                  spaceBetween:30
+                                },
+                                1540: {
+                                  width: 1540,
+                                  slidesPerView: 5,
+                                  slidesPerGroup:5
+                                },
+                                1300: {
+                                  width: 1300,
+                                  slidesPerView: 4,
+                                  slidesPerGroup:4
+                                },
+                                1100: {
+                                  width: 1000,
+                                  slidesPerView: 3,
+                                  slidesPerGroup:3
+                                },
+                                992: {
+                                  width: 992,
+                                  slidesPerView: 2,
+                                  slidesPerGroup:2,
+                                  spaceBetween:10
+                                },
+                                576: {
+                                  width: 400,
+                                  slidesPerView: 1,
+                                  slidesPerGroup:1
+                                },
+                               
+                              }}
                         >
                             {listFilms.filter(item => item.hot).map((item, index) => {
                                 return renderFilms2(item, index)
@@ -320,6 +355,40 @@ export default function ListFilm() {
                             navigation={true}
                             modules={[Pagination, Navigation]}
                             className="mySwiper"
+                            breakpoints={{
+                                1630: {
+                                  width: 1630,
+                                  slidesPerView: 6,
+                                  slidesPerGroup:6
+                                },
+                                1540: {
+                                  width: 1540,
+                                  slidesPerView: 5,
+                                  slidesPerGroup:5
+                                },
+                                1300: {
+                                  width: 1300,
+                                  slidesPerView: 4,
+                                  slidesPerGroup:4
+                                },
+                                1100: {
+                                  width: 1100,
+                                  slidesPerView: 3,
+                                  slidesPerGroup:3
+                                },
+                                992: {
+                                  width: 992,
+                                  slidesPerView: 2,
+                                  slidesPerGroup:2,
+                                  spaceBetween:10
+                                },
+                                576: {
+                                  width: 400,
+                                  slidesPerView: 1,
+                                  slidesPerGroup:1
+                                },
+                               
+                              }}
                         >
                             {listFilms.filter(item => item.dangChieu).map((item, index) => {
                                 return renderFilms2(item, index)
@@ -344,6 +413,40 @@ export default function ListFilm() {
                             navigation={true}
                             modules={[Pagination, Navigation]}
                             className="mySwiper"
+                            breakpoints={{
+                                1630: {
+                                  width: 1630,
+                                  slidesPerView: 6,
+                                  slidesPerGroup:6
+                                },
+                                1540: {
+                                  width: 1540,
+                                  slidesPerView: 5,
+                                  slidesPerGroup:5
+                                },
+                                1300: {
+                                  width: 1300,
+                                  slidesPerView: 4,
+                                  slidesPerGroup:4
+                                },
+                                1100: {
+                                  width: 1100,
+                                  slidesPerView: 3,
+                                  slidesPerGroup:3
+                                },
+                                992: {
+                                  width: 992,
+                                  slidesPerView: 2,
+                                  slidesPerGroup:2,
+                                  spaceBetween:10
+                                },
+                                576: {
+                                  width: 400,
+                                  slidesPerView: 1,
+                                  slidesPerGroup:1
+                                },
+                               
+                              }}
                         >
                             {listFilms.filter(item => item.sapChieu).map((item, index) => {
 

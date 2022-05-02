@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
 }
+
 html {
   color: white;
 }
@@ -126,10 +127,20 @@ ul {
   left: 0;
   width: 100%;
 }
+.row-audience{
+  flex-wrap: nowrap;
+}
+.view-zone{
+
+}
+/* .big-container{
+  flex-wrap: nowrap;
+} */
 .monitorx {
   position: relative;
   margin: auto;
   width: 90%;
+  min-width: 940px;
   height: 20px;
   background-color: rgb(80, 59, 22);
 }
@@ -188,6 +199,7 @@ ul {
   margin: auto;
 }
 .list-audience-2 {
+  min-width: 940px;
   width: 100%;
   margin: 80px auto;
 }
@@ -549,7 +561,7 @@ body {
 
 /* width */
 .ant-tabs-content-left::-webkit-scrollbar {
-  width: 20px;
+  width: 15px;
 }
 
 /* Track */
@@ -560,14 +572,14 @@ body {
 
 /* Handle */
 .ant-tabs-content-left::-webkit-scrollbar-thumb {
-  background: red;
+  background: rgb(113, 108, 108);
   border-radius: 10px;
   z-index: 100;
 }
 
 /* Handle on hover */
 .ant-tabs-content-left::-webkit-scrollbar-thumb:hover {
-  background: #b30000;
+  background: rgb(148, 138, 138);
   z-index: 100;
 }
 

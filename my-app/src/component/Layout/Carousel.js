@@ -22,8 +22,8 @@ export default function Carousels() {
     lineHeight: '500px',
     textAlign: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: "100%",
-    // backgroundSize: "cover",
+    // backgroundSize: "100%",
+    backgroundSize: "cover",
     backgroundPosition:'bottom',
     cursor:'pointer',
   };

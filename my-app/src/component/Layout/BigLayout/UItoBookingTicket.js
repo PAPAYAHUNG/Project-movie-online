@@ -133,24 +133,27 @@ export default function UItoBookingTicket(props) {
                                 {/* seat-choosing */}
                                 <div className="timeToChoose pb-5">
                                     <div className="row">
-                                        <div className="col-4">
-                                            <h4 className="ml-4 text-white">
-                                                {ngayChieu}-{gioChieu}
+                                        {/* <div className="col-7">
+                                            <h4 className="ml-4 text-white text-center">
+                                                {ngayChieu}-<span className='text-warning'>{gioChieu}</span>
                                             </h4>
-                                        </div>
+                                        </div> */}
                                         {/* <div className="col-4 text-center">
                                             <h4>Choosing time left</h4>
                                             <h1 className="text-warning">02:06</h1>
                                         </div> */}
                                     </div>
                                     {/* main-zone */}
-                                    <div className="row mt-4">
-                                        <div className="col-7 text-center">
+                                    <div className="row big-container mt-4">
+                                        <div className="col-7 text-center view-zone">
+                                            <h4 className="ml-4 text-white text-center">
+                                                {ngayChieu}-<span className='text-warning'>{gioChieu}</span>
+                                            </h4>
                                             <div className="monitorx"> </div>
                                             <div className="list-audience-2">
-                                                <div className="rowjustify-content-center  mt-4 listChair">
+                                                <div className="row justify-content-center  mt-4 listChair">
                                                     {_.chunk(infoBooking?.danhSachGhe, 16).map((row, index) => {
-                                                        return <div className='row justify-content-between' key={`row-${index}`}>
+                                                        return <div className='row justify-content-between row-audience' key={`row-${index}`}>
                                                             {row.map((chair, index) => {
                                                                 let cssVip = chair.loaiGhe === 'Vip' ? 'vip-seat-big' : ''
                                                                 let cssSelected = chair.daDat ? 'selected-seat-big' : ''
@@ -243,7 +246,8 @@ export default function UItoBookingTicket(props) {
                                             </div>
                                         </div>
                                         {/* Bill zone */}
-                                        <div className="col-5">
+                                        
+                                        <div className="col-5 mt-5 bill-zone-cover">
                                             <div className="bill-zone">
                                                 <h3 className="p-4 text-center text-white">{tenPhim}</h3>
                                                 <table className="table">

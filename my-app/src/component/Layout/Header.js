@@ -3,6 +3,8 @@ import { NavLink, useLocation, useParams } from 'react-router-dom'
 import { Select } from 'antd';
 import { useTranslation } from 'react-i18next';
 import _ from 'lodash'
+import NabarMock from '../../pages/NabarMock';
+
 export default function Header() {
     const { Option } = Select;
     const { t, i18n } = useTranslation()
@@ -14,9 +16,9 @@ export default function Header() {
     console.log({ location })
 
     //Add state to manage Width of class button group Responsive
-    const [isClicked,setIsCLicked] = useState(false)
-    let cssWidth= isClicked? "width-100":""
-    
+    const [isClicked, setIsCLicked] = useState(false)
+    let cssWidth = isClicked ? "width-100" : ""
+
 
 
     //Check user login or not from local storage
@@ -56,15 +58,17 @@ export default function Header() {
                 <NavLink to="/" className="navbar-brand" href="Logo">
                     <img src="./Images/PngItem_33985.png" alt='134' style={{ height: 50 }} />
                 </NavLink>
-                <button className="navbar-toggler d-lg-none"
+                <button
+                    style={{ marginRight: "auto" }}
+                    className="navbar-toggler d-lg-none"
                     type="button"
                     data-toggle="collapse"
                     data-target="#collapsibleNavId"
                     aria-controls="collapsibleNavId"
                     aria-expanded="false"
-                    aria-label="Toggle navigation" 
-                    onClick={()=>{
-                        setIsCLicked(prev=>!prev)
+                    aria-label="Toggle navigation"
+                    onClick={() => {
+                        setIsCLicked(prev => !prev)
                     }}><i class="fa fa-list"></i></button>
                 <div className="collapse navbar-collapse" id="collapsibleNavId">
                     <ul className="navbar-nav mr-auto mt-2 mt-lg-0 justify-content-center navbar-modified">
@@ -87,7 +91,7 @@ export default function Header() {
 
                     </ul>
                 </div>
-                <div  className={`d-flex justify-content-end ${cssWidth}`}>
+                <div className={`d-flex justify-content-end ${cssWidth}`}>
                     {renderLogin()}
 
                     <Select className='d-none d-lg-block' defaultValue="en" style={{ width: 80 }} onChange={handleChange}>
@@ -97,7 +101,7 @@ export default function Header() {
                     </Select>
                 </div>
             </nav>
-            
+
 
         </div>
     )

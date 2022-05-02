@@ -39,7 +39,7 @@ export default function DetailFilmWithBrand() {
                 <Tabs tabPosition={tabPosition}>
                     {listCinema?.map((item, index) => {
 
-                        return <TabPane tab={<div className="cinema-brand mt-5">
+                        return <TabPane tab={<div className="cinema-brand  mt-5">
                             <img className="img-fluid" src={item.logo} alt='1234' style={{ width: 50, height: 50, borderRadius: '50%' }} />
                         </div>} key={index}>
 
@@ -72,17 +72,17 @@ export default function DetailFilmWithBrand() {
                                                   }
                                                     
                                                 }} >
-                                                    <NavLink to={itemRight.maPhim.toString()} className="col-2 ">
+                                                    <NavLink to={itemRight.maPhim.toString()} className="col-12 col-md-4 col-lg-3 col-xl-2  text-center">
                                                         <img src={itemRight.hinhAnh} alt={itemRight.hinhAnh} className='img-fluid logo-2d' onError={(e) => {e.target.onerror = null; e.target.src = 'https://picsum.photos/500'}} />
                                                         {/* <img className="img-fluid logo-2d" src="./Images/2D-512.webp" alt='1234' /> */}
                                                     </NavLink >
-                                                    <div className="col-10">
-                                                       <NavLink to={itemRight.maPhim.toString()}> <h4 className='text-white'>{itemRight?.tenPhim}</h4> </NavLink>
+                                                    <div className=" col-12 col-md-6 col-lg-9 col-xl-10">
+                                                       <NavLink to={itemRight.maPhim.toString()}> <h4 className='text-white text-center'>{itemRight?.tenPhim}</h4> </NavLink>
                                                         <div className="row justify-content-start ">
                                                             {itemRight?.lstLichChieuTheoPhim?.slice(0,6).map((timeShow, index) => {
                                                                 return <div key={index} className="timeClock d-flex align-items-center mr-4">
                                                                     {/* <h3 className='text-success'>{ timeShow.ngayChieuGioChieu.slice(-8).slice(0, 5)}</h3> */}
-                                                                    <h3 className='text-success'>{moment(timeShow.ngayChieuGioChieu).format('hh:mm A')}</h3>
+                                                                    <h3 className='text-success time-text'>{moment(timeShow.ngayChieuGioChieu).format('hh:mm A')}</h3>
                                                                 </div>
                                                             })}
                                                         </div>

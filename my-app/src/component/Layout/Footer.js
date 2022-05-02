@@ -9,7 +9,7 @@ export default function Footer() {
             <div className='footer-overlay'></div>
             <div className="container">
                 <div className="row">
-                    <div className="col-4">
+                    <div className="col-6 col-md-4 order-md-1 order-2">
                         <div className="row">
                             <div className="col-12 text-left">
                                 <h4>About us</h4>
@@ -22,16 +22,16 @@ export default function Footer() {
 
                         </div>
                     </div>
-                    <div className="col-4">
+                    <div className="col-12 col-md-4 sponsor text-center order-md-1 order-1" >
                         <div className="row justify-content-between">
                             {listCinema?.map((item, index) => {
-                                return <div key={index} className="col-4 mt-3">
+                                return <div key={index} className="col-4 col-md-4 mt-3">
                                     <img className="img-fluid" style={{ borderRadius: '50%', width: 50 }} src={item.logo} alt='1234' />
                                 </div>
                             })}
                         </div>
                     </div>
-                    <div className="col-4">
+                    <div className="col-6 col-md-4  order-md-1 order-3">
                         <div className="row justify-content-end">
                             <div className="col-6  ">
                                 <div className='text-center' > 
