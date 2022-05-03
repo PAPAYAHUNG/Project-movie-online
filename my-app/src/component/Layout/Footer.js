@@ -12,7 +12,7 @@ export default function Footer() {
                     <div className="col-6 col-md-4 order-md-1 order-2">
                         <div className="row">
                             <div className="col-12 text-left">
-                                <h4>About us</h4>
+                                 <h4 className='mt-4'>About us</h4>
                                 <ul className='text-left font-color'>
                                     <li style={{fontSize:16, fontWeight:500}}>Cenima Brand</li>
                                     <li style={{fontSize:16, fontWeight:500}}>Recruiments</li>
@@ -35,7 +35,7 @@ export default function Footer() {
                         <div className="row justify-content-end">
                             <div className="col-6  ">
                                 <div className='text-center' > 
-                                    <h4>Contact</h4>
+                                     <h4 className='mt-4'>Contact</h4>
                                     <ul className=' font-color'>
                                         <li className=''><i style={{fontSize:40}}  className="fab fa-instagram" /></li>
                                         <li className=''><i style={{fontSize:40}} className="fab fa-facebook" /></li>

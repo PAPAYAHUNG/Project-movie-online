@@ -66,9 +66,9 @@ export function UserUpdate(props) {
       maLoaiNguoiDung: user[0]?.maLoaiNguoiDung,
       hoTen: user[0]?.hoTen
     },
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       console.log({ values })
-      navigate(-1)
+     await navigate(-1)
       dispatch(UpdateNewUserAction(values))
     }
   })

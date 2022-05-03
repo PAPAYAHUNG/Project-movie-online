@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { NavLink, useLocation, useParams } from 'react-router-dom'
 import { Select } from 'antd';
 import { useTranslation } from 'react-i18next';
@@ -19,7 +19,23 @@ export default function Header() {
     const [isClicked, setIsCLicked] = useState(false)
     let cssWidth = isClicked ? "width-100" : ""
 
-
+    //Add state to manage blur header background
+    const [scroll,setScroll] = useState(false)
+    const displayBgHeader = ()=>{
+        console.log(window.pageYOffset)
+        if(window.scrollY>100){
+            setScroll(true)
+        }
+        else{
+            setScroll(false)
+        }
+    }
+    useEffect(()=>{
+        window.addEventListener('scroll',displayBgHeader)
+        return ()=>{
+            window.removeEventListener('scroll',displayBgHeader)
+        }
+    },[])
 
     //Check user login or not from local storage
     let userinfo = JSON.parse(localStorage.getItem("USER_LOGIN_MOVIE"))
@@ -43,7 +59,7 @@ export default function Header() {
                     <NavLink to='/userInfo'>
                         <button className="btn btn-success mr-3">{`${t('Hello')}! ${userinfo.taiKhoan}`}</button>
                     </NavLink> : ''}
-                <NavLink to='SignIn'>
+                <NavLink to='/SignIn' state={{from:location}} replace>
                     <button className="btn btn-warning mr-3" onClick={() => {
                         localStorage.removeItem('ACCESS_TOKEN_MOVIE')
                         localStorage.removeItem('USER_LOGIN_MOVIE')
@@ -53,7 +69,7 @@ export default function Header() {
         }
     }
     return (
-        <div className='header'>
+        <div className={`header ${scroll && "header-bg-reset"}`}>
             <nav className="  navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: 'linkImagee3f2fd' }}>
                 <NavLink to="/" className="navbar-brand" href="Logo">
                     <img src="./Images/PngItem_33985.png" alt='134' style={{ height: 50 }} />

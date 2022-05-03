@@ -16,7 +16,10 @@ function SignInForm(props) {
     } = props;
     console.log(values)
     let navigate = useNavigate()
+
     let location = useLocation()
+    let from = location.state?.from.pathname || "/"
+
     console.log({location})
    let {isAuth}= useSelector(state=>state.UserLoginReducer)
 
@@ -62,13 +65,13 @@ function SignInForm(props) {
 
                                 <div className='d-flex justify-content-end'>
                                     <div className="">
-                                        <button type="submit" onClick={() => {
+                                        <button type="submit" onClick={ async() => {
 
                                             let malichChieu = localStorage.getItem('maLichChieu')
                                             setTimeout(()=>{
                                                 if (localStorage.getItem('ACCESS_TOKEN_MOVIE')) {
                                                     // navigate(`/booking${malichChieu}`)
-                                                    navigate(-1)
+                                                    navigate(from,{replace:true})
                                                     
                                                 }
                                                 else {

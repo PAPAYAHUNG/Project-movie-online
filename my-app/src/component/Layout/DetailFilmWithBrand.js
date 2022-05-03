@@ -78,9 +78,9 @@ export default function DetailFilmWithBrand() {
                                                     </NavLink >
                                                     <div className=" col-12 col-md-6 col-lg-9 col-xl-10">
                                                         <NavLink to={itemRight.maPhim.toString()}> <h4 className='text-white text-center'>{itemRight?.tenPhim}</h4> </NavLink>
-                                                        <div className="row justify-content-start ">
+                                                        <div className="row justify-content-center ">
                                                             {itemRight?.lstLichChieuTheoPhim?.slice(0, 6).map((timeShow, index) => {
-                                                                return <div key={index} style={{width:"100%"}} className="timeClock d-flex justify-content-center align-items-center mr-4">
+                                                                return <div key={index}  className="timeClock d-flex  justify-content-between align-items-center mr-4">
                                                                     <h3 className='text-success text-center time-text'>{moment(timeShow.ngayChieuGioChieu).format('hh:mm A')}</h3>
                                                                 </div>
                                                             })}

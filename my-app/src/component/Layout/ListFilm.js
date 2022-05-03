@@ -147,7 +147,7 @@ export default function ListFilm() {
             </div> */}
                 <button onClick={() => {
                     console.log('maPhim', item)
-                }} className='btn btn-danger w-100'>BOOK TICKET</button>
+                }} className='btn btn-dark w-100'>BOOK TICKET</button>
             </NavLink>
         
 
@@ -177,7 +177,7 @@ export default function ListFilm() {
 
                 <button onClick={() => {
                     console.log('maPhim', item)
-                }} className='btn btn-danger w-100'>BOOK TICKET</button>
+                }} className='btn btn-dark w-100'>BOOK TICKET</button>
             </NavLink>
 
         </SwiperSlide>
