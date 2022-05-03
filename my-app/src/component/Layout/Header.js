@@ -71,7 +71,7 @@ export default function Header() {
                         setIsCLicked(prev => !prev)
                     }}><i class="fa fa-list"></i></button>
                 <div className="collapse navbar-collapse" id="collapsibleNavId">
-                    <ul className="navbar-nav mr-auto mt-2 mt-lg-0 justify-content-center navbar-modified">
+                    <ul className="navbar-nav mr-auto mt-2 mt-lg-0 justify-content-start navbar-modified">
                         <li className="nav-item" >
                             <NavLink to="/" className="nav-link d-block" >{t('Home')} </NavLink>
                         </li>

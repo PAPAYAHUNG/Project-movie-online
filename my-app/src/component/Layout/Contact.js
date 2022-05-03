@@ -19,7 +19,7 @@ export default function Contact() {
                                 <ul className="tn-emails">
                                     <li><span className="tn-mail-icon">
                                         <img src="https://cdn11.ticketnew.com/images/mail-icon.png" alt /></span></li>
-                                    <li><a className="tn-email" href="mailto:support@ticketnew.com">support@ticketnew.com</a></li>
+                                    <li><a className="tn-email" href="mailTo:levoanhhung@gmail.com">support@AlanHung.com</a></li>
                                 </ul>
                                 <ul className="tn-phone-numbers d-flex">
                                     <li><span className="tn-mobile-icon mr-2">
@@ -34,7 +34,7 @@ export default function Contact() {
                                 <ul className="tn-emails">
                                     <li><span className="tn-mail-icon">
                                         <img src="https://cdn11.ticketnew.com/images/mail-icon.png" alt /></span></li>
-                                    <li><a className="tn-email" href="mailto:jobs@ticketnew.com">jobs@ticketnew.com</a></li>
+                                    <li><a className="tn-email" href="mailTo:levoanhhung@gmail.com">jobs@AlanHung.com</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -44,7 +44,7 @@ export default function Contact() {
                                 <ul className="tn-emails">
                                     <li><span className="tn-mail-icon">
                                         <img src="https://cdn11.ticketnew.com/images/mail-icon.png" alt /></span></li>
-                                    <li><a className="tn-email" href="mailto:advertise@ticketnew.com">advertise@ticketnew.com</a></li>
+                                    <li><a className="tn-email" href="mailTo:levoanhhung@gmail.com">advertise@AlanHung.com</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -54,7 +54,7 @@ export default function Contact() {
                                 <ul className="tn-emails">
                                     <li><span className="tn-mail-icon">
                                         <img src="https://cdn11.ticketnew.com/images/mail-icon.png" alt /></span></li>
-                                    <li><a className="tn-email" href="mailto:sell@ticketnew.com">sell@ticketnew.com</a></li>
+                                    <li><a className="tn-email" href="mailTo:levoanhhung@gmail.com">sell@AlanHung.com</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -65,7 +65,7 @@ export default function Contact() {
                                 <ul className="tn-emails">
                                     <li><span className="tn-mail-icon">
                                         <img src="https://cdn11.ticketnew.com/images/mail-icon.png" alt /></span></li>
-                                    <li><a className="tn-email" href="mailto:marketing@ticketnew.com">marketing@ticketnew.com</a></li>
+                                    <li><a className="tn-email" href="mailTo:levoanhhung@gmail.com">marketing@AlanHung.com</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -75,31 +75,31 @@ export default function Contact() {
             <div className="tn-section1 tn-dark tn-feature-links">
                 <div className="tn-section-content">
                     <ul className='tn-section-content-1'>
-                        <li><a href="https://www.ticketnew.com/onlinetheatre/theatre/ContactUs.aspx" data-original-image="https://cdn11.ticketnew.com/images/customer-care.svg" data-rollover-image="https://cdn11.ticketnew.com/images/customer-care-rollover.svg">
+                        <li><a href="#" data-original-image="https://cdn11.ticketnew.com/images/customer-care.svg" data-rollover-image="https://cdn11.ticketnew.com/images/customer-care-rollover.svg">
                             <div className="image">
                                 <img src="https://cdn11.ticketnew.com/images/customer-care.svg" />
                             </div>
                             <h5>Customer Care</h5>
                         </a></li>
-                        <li><a href="https://www.ticketnew.com/onlinetheatre/theatre/Help.aspx" data-original-image="https://cdn11.ticketnew.com/images/faq.svg" data-rollover-image="https://cdn11.ticketnew.com/images/faq-rollover.svg">
+                        <li><a href="#" data-original-image="https://cdn11.ticketnew.com/images/faq.svg" data-rollover-image="https://cdn11.ticketnew.com/images/faq-rollover.svg">
                             <div className="image">
                                 <img src="https://cdn11.ticketnew.com/images/faq.svg" />
                             </div>
                             <h5>FAQ</h5>
                         </a></li>
-                        <li><a href="https://www.ticketnew.com/onlinetheatre/theatre/ContactUs.aspx" data-original-image="https://cdn11.ticketnew.com/images/about-us.svg" data-rollover-image="https://cdn11.ticketnew.com/images/about-us-rollover.svg">
+                        <li><a href="#" data-original-image="https://cdn11.ticketnew.com/images/about-us.svg" data-rollover-image="https://cdn11.ticketnew.com/images/about-us-rollover.svg">
                             <div className="image">
                                 <img src="https://cdn11.ticketnew.com/images/about-us.svg" />
                             </div>
                             <h5>About Us</h5>
                         </a></li>
-                        <li><a href="https://www.ticketnew.com/onlinetheatre/theatre/feedback.aspx" data-original-image="https://cdn11.ticketnew.com/images/feedback.svg" data-rollover-image="https://cdn11.ticketnew.com/images/feedback-rollover.svg">
+                        <li><a href="#" data-original-image="https://cdn11.ticketnew.com/images/feedback.svg" data-rollover-image="https://cdn11.ticketnew.com/images/feedback-rollover.svg">
                             <div className="image">
                                 <img src="https://cdn11.ticketnew.com/images/feedback.svg" />
                             </div>
                             <h5>Feedback</h5>
                         </a></li>
-                        <li><a href="https://www.ticketnew.com/boxoffice/" target="_blank" data-original-image="https://cdn11.ticketnew.com/images/boxoffice.svg" data-rollover-image="https://cdn11.ticketnew.com/images/boxoffice-rollover.svg">
+                        <li><a href="#" target="_blank" data-original-image="https://cdn11.ticketnew.com/images/boxoffice.svg" data-rollover-image="https://cdn11.ticketnew.com/images/boxoffice-rollover.svg">
                             <div className="image">
                                 <img src="https://cdn11.ticketnew.com/images/boxoffice.svg" />
                             </div>

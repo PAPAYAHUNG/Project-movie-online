@@ -9,7 +9,7 @@ export class ManageFilmSerivce extends baseService {
         return this.get('/api/QuanLyPhim/LayDanhSachBanner')
     }
     getbListFilmsService = () => {
-        return this.get('/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01')
+        return this.get('/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP15')
     }
     getAllCenima = ()=>{
         return this.get('/api/QuanLyRap/LayThongTinHeThongRap')

@@ -60,7 +60,7 @@ export default function EditUserAmin() {
         <div className='row mt-5'>
             <div className="form-group col-6">
                 <label style={{fontSize:25}} >User name</label>
-                <input type="text"
+                <input disabled type="text"
                     className="form-control" name="taiKhoan"
                     onChange={formik.handleChange}
                     value={formik.values.taiKhoan} />

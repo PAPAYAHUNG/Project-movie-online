@@ -16,7 +16,7 @@ import {
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 import { useFormik } from 'formik';
 import moment from 'moment'
-import { AddFilmAdminAction } from '../../redux/action/AdminAction';
+import { AddFilmAdminAction, LoadListFilmAdminAction } from '../../redux/action/AdminAction';
 import { useNavigate } from 'react-router-dom';
 
 export default function AddNewFilms() {
@@ -37,7 +37,7 @@ export default function AddNewFilms() {
             danhGia: 0,
             hinhAnh: '',
         },
-        onSubmit: values => {
+        onSubmit:async values => {
             //   alert(JSON.stringify(values, null, 2));
             console.log({ values })
             values.maNhom='GP15'
@@ -56,7 +56,8 @@ export default function AddNewFilms() {
             console.log("formData",formData.get('File'))
             //dispacth this form to the server
             dispatch(AddFilmAdminAction(formData))
-            navigate('/admin/films-admin')
+            await navigate('/admin/films-admin')
+            dispatch(LoadListFilmAdminAction())
         },
     }); 
 

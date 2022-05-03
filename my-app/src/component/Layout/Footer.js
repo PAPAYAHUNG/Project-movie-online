@@ -23,7 +23,7 @@ export default function Footer() {
                         </div>
                     </div>
                     <div className="col-12 col-md-4 sponsor text-center order-md-1 order-1" >
-                        <div className="row justify-content-between">
+                        <div className="row justify-content-center">
                             {listCinema?.map((item, index) => {
                                 return <div key={index} className="col-4 col-md-4 mt-3">
                                     <img className="img-fluid" style={{ borderRadius: '50%', width: 50 }} src={item.logo} alt='1234' />

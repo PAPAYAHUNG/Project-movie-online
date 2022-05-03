@@ -103,7 +103,11 @@ export default function AddUserAdmin() {
             <button type='submit' className='btn btn-success'>Add User </button>
         </div>
         <div className="form-group ">
-            <button type='button' className='btn text-warning'><i className="fa fa-backward"></i> Back </button>
+            <button onClick={()=>{
+                
+                navigate(-1)
+            }}
+            type='button' className='btn text-warning'><i className="fa fa-backward" ></i> Back </button>
         </div>
 
     </form>

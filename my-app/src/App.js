@@ -28,6 +28,7 @@ import EditUserAmin from './component/AdminPage/EditUserAmin';
 import Contact from './component/Layout/Contact';
 import News from './component/Layout/News';
 import '../src/pages/movieResponsive.css'
+import Unauthorized from './component/Layout/BigLayout/Unauthorized';
 export const history = createBrowserHistory()
 
 const UItoBookingTicketLazy = lazy(() => import('./component/Layout/BigLayout/UItoBookingTicket'))
@@ -37,14 +38,14 @@ function App() {
         <Loading/>
       <Suspense fallback={<h1>Loading ...</h1>} >
         <Routes history={history}>
-          <Route element={<ProtectedRoutes />}>
+          <Route element={<ProtectedRoutes allowRoles={["QuanTri","KhachHang"]} />}>
             <Route path='/booking:maPhim' element={<UItoBookingTicketLazy />} />
             <Route path='/userInfo' element={<UserInfo />} >
               <Route index element={<UserInfomation/>}/>
               <Route path='user-update' element={<UserUpdate/>}/>
             </Route>
           </Route>
-          <Route element={<ProtectedRoutes />}>
+          <Route element={<ProtectedRoutes allowRoles={["QuanTri"]} />}>
             <Route path='admin' element={<AdminPage />} >
                 <Route path='films-admin' element={<FilmsAdmin/>}/>
                 <Route path='user-admin' element={<UserAdmin/>}/>
@@ -53,7 +54,7 @@ function App() {
                 <Route path='add-films' element={<AddNewFilms/>}/>
                 <Route path='films-admin/edit/:idFilm' element={<Edit/>}/>
                 <Route path='films-admin/showTime/:idFilm' element={<Showtime/>}/>
-                {/* <Route index element={<UserAdmin/>}/> */}
+                <Route index element={<UserAdmin/>}/>
             </Route>
           </Route>
           <Route path='/' element={<Homes />}>
@@ -61,6 +62,7 @@ function App() {
             <Route path='contact' element={<Contact />} />
             <Route path='news' element={<News />} />
             <Route path=':detailID' element={<UIWhenClicked />} />
+            <Route path='unauthorized' element={< Unauthorized/>} />
           </Route>
           <Route path='signUp' element={<LoginForm />} />
           <Route path='signIn' element={<SignInForm />} />

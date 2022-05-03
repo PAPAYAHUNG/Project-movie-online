@@ -132,20 +132,20 @@ export default function UItoBookingTicket(props) {
                             <TabPane tab="BOOKING" key="1" >
                                 {/* seat-choosing */}
                                 <div className="timeToChoose pb-5">
-                                    <div className="row">
-                                        {/* <div className="col-7">
+                                    {/* <div className="row">
+                                        <div className="col-7">
                                             <h4 className="ml-4 text-white text-center">
                                                 {ngayChieu}-<span className='text-warning'>{gioChieu}</span>
                                             </h4>
-                                        </div> */}
-                                        {/* <div className="col-4 text-center">
+                                        </div>
+                                        <div className="col-4 text-center">
                                             <h4>Choosing time left</h4>
                                             <h1 className="text-warning">02:06</h1>
-                                        </div> */}
-                                    </div>
+                                        </div>
+                                    </div> */}
                                     {/* main-zone */}
                                     <div className="row big-container mt-4">
-                                        <div className="col-7 text-center view-zone">
+                                        <div className="col-7 col-width-1500  text-center ">
                                             <h4 className="ml-4 text-white text-center">
                                                 {ngayChieu}-<span className='text-warning'>{gioChieu}</span>
                                             </h4>
@@ -246,8 +246,8 @@ export default function UItoBookingTicket(props) {
                                             </div>
                                         </div>
                                         {/* Bill zone */}
-                                        
-                                        <div className="col-5 mt-5 bill-zone-cover">
+
+                                        <div className="col-5 mt-5 col-width-1500  ">
                                             <div className="bill-zone">
                                                 <h3 className="p-4 text-center text-white">{tenPhim}</h3>
                                                 <table className="table">

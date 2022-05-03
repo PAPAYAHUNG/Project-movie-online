@@ -35,7 +35,7 @@ export default function DetailFilmWithBrand() {
     return (
         <div className="container-Mod-1 pt-4">
             <div className='container-Mod-1-overlay'></div>
-           <div style={{position:"relative"}}>
+            <div style={{ position: "relative" }}>
                 <Tabs tabPosition={tabPosition}>
                     {listCinema?.map((item, index) => {
 
@@ -52,43 +52,42 @@ export default function DetailFilmWithBrand() {
                                             <div className="col-9">
                                                 <div className="row">
                                                     <p>{item2.tenCumRap}</p>
-                                                    <p>{item2.diaChi.length>40?`${item2.diaChi.slice(0,40)} ...`:item2.diaChi}</p>
+                                                    <p>{item2.diaChi.length > 40 ? `${item2.diaChi.slice(0, 40)} ...` : item2.diaChi}</p>
                                                 </div>
                                             </div>
                                         </div>
 
                                     </div>} key={index2}>
                                         {item2?.danhSachPhim.map((itemRight, index3) => {
-                                                
+
                                             return <Fragment key={index3}>
-                                                <div className="row mt-3 item-to-book" onClick={ async()=>{
-                                                    console.log( {itemRight})
-                                                    console.log( 'maPhim2',itemRight.maPhim)
-                                                  try{
-                                                   await navigate(`${itemRight.maPhim}`)
-                                                   dispatch(getInfoFilmWhenClicked(itemRight.maPhim))
-                                                  }catch (err){
-                                                      console.log(err)
-                                                  }
-                                                    
+                                                <div className="row mt-3 item-to-book" onClick={async () => {
+                                                    console.log({ itemRight })
+                                                    console.log('maPhim2', itemRight.maPhim)
+                                                    try {
+                                                        await navigate(`${itemRight.maPhim}`)
+                                                        dispatch(getInfoFilmWhenClicked(itemRight.maPhim))
+                                                    } catch (err) {
+                                                        console.log(err)
+                                                    }
+
                                                 }} >
                                                     <NavLink to={itemRight.maPhim.toString()} className="col-12 col-md-4 col-lg-3 col-xl-2  text-center">
-                                                        <img src={itemRight.hinhAnh} alt={itemRight.hinhAnh} className='img-fluid logo-2d' onError={(e) => {e.target.onerror = null; e.target.src = 'https://picsum.photos/500'}} />
+                                                        <img src={itemRight.hinhAnh} alt={itemRight.hinhAnh} className='img-fluid logo-2d' onError={(e) => { e.target.onerror = null; e.target.src = 'https://picsum.photos/500' }} />
                                                         {/* <img className="img-fluid logo-2d" src="./Images/2D-512.webp" alt='1234' /> */}
                                                     </NavLink >
                                                     <div className=" col-12 col-md-6 col-lg-9 col-xl-10">
-                                                       <NavLink to={itemRight.maPhim.toString()}> <h4 className='text-white text-center'>{itemRight?.tenPhim}</h4> </NavLink>
+                                                        <NavLink to={itemRight.maPhim.toString()}> <h4 className='text-white text-center'>{itemRight?.tenPhim}</h4> </NavLink>
                                                         <div className="row justify-content-start ">
-                                                            {itemRight?.lstLichChieuTheoPhim?.slice(0,6).map((timeShow, index) => {
-                                                                return <div key={index} className="timeClock d-flex align-items-center mr-4">
-                                                                    {/* <h3 className='text-success'>{ timeShow.ngayChieuGioChieu.slice(-8).slice(0, 5)}</h3> */}
-                                                                    <h3 className='text-success time-text'>{moment(timeShow.ngayChieuGioChieu).format('hh:mm A')}</h3>
+                                                            {itemRight?.lstLichChieuTheoPhim?.slice(0, 6).map((timeShow, index) => {
+                                                                return <div key={index} style={{width:"100%"}} className="timeClock d-flex justify-content-center align-items-center mr-4">
+                                                                    <h3 className='text-success text-center time-text'>{moment(timeShow.ngayChieuGioChieu).format('hh:mm A')}</h3>
                                                                 </div>
                                                             })}
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <hr style={{border:'1px solid white'}}/>
+                                                <hr style={{ border: '1px solid white' }} />
                                             </Fragment>
                                         })}
                                     </TabPane>
@@ -100,8 +99,8 @@ export default function DetailFilmWithBrand() {
                     })}
 
                 </Tabs>
-                </div>
-       
+            </div>
+
 
 
 

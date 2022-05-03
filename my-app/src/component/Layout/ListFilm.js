@@ -137,13 +137,7 @@ export default function ListFilm() {
                         <div>
                             <span>{item.danhGia}/10</span>
                         </div>
-                        {/* <div className="rating">
-                        <i className="fa fa-star" />
-                        <i className="fa fa-star" />
-                        <i className="fa fa-star" />
-                        <i className="fa fa-star" />
-                        <i className="fa fa-star-half" />
-                    </div> */}
+                       
                         <Rate allowHalf defaultValue={item.danhGia / 2} />
                     </div>
                 </div>
@@ -155,14 +149,7 @@ export default function ListFilm() {
                     console.log('maPhim', item)
                 }} className='btn btn-danger w-100'>BOOK TICKET</button>
             </NavLink>
-            {/* <NavLink to={item.maPhim}> <button onClick={()=>{
-                console.log('maPhim', item)
-            }}  className='btn btn-danger w-100'>BOOK TICKET</button>
-            </NavLink> */}
-            {/* <button onClick={()=>{
-                console.log('maPhim', item.maPhim)
-                history.push(`/booking`)
-            }}  className='btn btn-warning w-100'>BOOK TICKET</button> */}
+        
 
         </div>
 
@@ -209,7 +196,7 @@ export default function ListFilm() {
                     <h2 style={{ zIndex: 10000, opacity: 1,position:"relative" }} className='text-primary text-center'>Trending</h2>
                     <Slider {...settings}>
 
-                        {listFilms.filter(item => item.dangChieu).map((item, index) => {
+                        {listFilms.filter(item => item.sapChieu).map((item, index) => {
                             return <div onClick={async () => {
                                 try {
                                     await navigate(`${item.maPhim}`)
@@ -344,9 +331,8 @@ export default function ListFilm() {
                     </TabPane> */}
                     <TabPane tab="On Showing" size='large' key="2">
                         <Swiper
-                            slidesPerView={6}
+                            
                             spaceBetween={30}
-                            slidesPerGroup={6}
                             loop={true}
                             loopFillGroupWithBlank={true}
                             pagination={{
@@ -359,7 +345,8 @@ export default function ListFilm() {
                                 1630: {
                                   width: 1630,
                                   slidesPerView: 6,
-                                  slidesPerGroup:6
+                                  slidesPerGroup:6,
+                                  spaceBetween:30
                                 },
                                 1540: {
                                   width: 1540,
@@ -372,7 +359,7 @@ export default function ListFilm() {
                                   slidesPerGroup:4
                                 },
                                 1100: {
-                                  width: 1100,
+                                  width: 1000,
                                   slidesPerView: 3,
                                   slidesPerGroup:3
                                 },
@@ -402,9 +389,8 @@ export default function ListFilm() {
                     </TabPane>
                     <TabPane tab="Coming Soon" key="3">
                         <Swiper
-                            slidesPerView={6}
+                           
                             spaceBetween={30}
-                            slidesPerGroup={6}
                             loop={true}
                             loopFillGroupWithBlank={true}
                             pagination={{
@@ -417,7 +403,8 @@ export default function ListFilm() {
                                 1630: {
                                   width: 1630,
                                   slidesPerView: 6,
-                                  slidesPerGroup:6
+                                  slidesPerGroup:6,
+                                  spaceBetween:30
                                 },
                                 1540: {
                                   width: 1540,
@@ -430,7 +417,7 @@ export default function ListFilm() {
                                   slidesPerGroup:4
                                 },
                                 1100: {
-                                  width: 1100,
+                                  width: 1000,
                                   slidesPerView: 3,
                                   slidesPerGroup:3
                                 },

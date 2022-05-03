@@ -119,6 +119,7 @@ export const AddNewUserAdmin = (newUser, navigate) => {
             let { data } = await adminService.AddUserAtAdminPage(newUser)
             console.log({ data })
             await alert('Add user succeed')
+    
         } catch (err) {
             console.log(err.response.data)
             alert(`Add user Failed - ${err.response.data.content}`)
