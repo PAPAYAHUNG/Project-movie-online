@@ -12,7 +12,7 @@ export const getListFilm = (params) => {
     return async (dispatch) => {
         try {
             const { data } = await manageFilmnServie.getbListFilmsService()
-            console.log(data)
+            console.log("dataaaaaaaaaaaaa",data)
             dispatch({
                 type: GET_LIST_FILMS,
                 data: data.content

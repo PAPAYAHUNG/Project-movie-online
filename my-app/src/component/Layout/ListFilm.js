@@ -36,7 +36,7 @@ export default function ListFilm() {
     }, [])
 
     let { listFilms } = useSelector(state => state.GetListFilmReducer)
-    // console.log(listFilms)
+    console.log("ssssssss",listFilms)
 
 
     const SampleNextArrow = (props) => {
@@ -253,10 +253,6 @@ export default function ListFilm() {
                                     </div>
                                 </div>
                             </div>
-
-
-
-
                         })}
                     </Slider>
                

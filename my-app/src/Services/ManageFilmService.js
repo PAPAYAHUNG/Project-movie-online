@@ -9,7 +9,7 @@ export class ManageFilmSerivce extends baseService {
         return this.get('/api/QuanLyPhim/LayDanhSachBanner')
     }
     getbListFilmsService = () => {
-        return this.get('/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP15')
+        return this.get('/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP03')
     }
     getAllCenima = ()=>{
         return this.get('/api/QuanLyRap/LayThongTinHeThongRap')
@@ -21,7 +21,7 @@ export class ManageFilmSerivce extends baseService {
         return this.get(`api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`)
     }
     getCinemaDetailFilms = () => {
-        return this.get('/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP15')
+        return this.get('/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP03')
     }
     getinFoWhenClicked = (id) => {
         return this.get(`/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`)

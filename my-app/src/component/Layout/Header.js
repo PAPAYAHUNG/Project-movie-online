@@ -22,7 +22,7 @@ export default function Header() {
     //Add state to manage blur header background
     const [scroll,setScroll] = useState(false)
     const displayBgHeader = ()=>{
-        console.log(window.pageYOffset)
+        // console.log(window.pageYOffset)
         if(window.scrollY>100){
             setScroll(true)
         }
