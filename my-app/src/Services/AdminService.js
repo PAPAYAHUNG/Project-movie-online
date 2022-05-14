@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { GROUP } from '../redux/types/type-constant';
 import { baseService } from './BaseServices';
 
 export class AdminService extends baseService{
@@ -9,9 +10,9 @@ export class AdminService extends baseService{
     //Get list films at admin page
     getListFilmAdmin = (keyWord="")=>{
         if(keyWord.trim() !== ""){
-        return this.get(`api/QuanLyPhim/LayDanhSachPhim?maNhom=GP15&tenPhim=${keyWord}`)
+        return this.get(`api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP}&tenPhim=${keyWord}`)
         }
-        return this.get('/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP15')
+        return this.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP}`)
     }
     //Add new film at admin page
     addNewFilmAdmin = (object)=>{
@@ -31,7 +32,7 @@ export class AdminService extends baseService{
     }
     //Search film onto server
     SearchFilmAdmin = (name)=>{
-        return this.get(`api/QuanLyPhim/LayDanhSachPhim?maNhom=GP15&tenPhim=${name}`)
+        return this.get(`api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP}&tenPhim=${name}`)
     }
     //Create showtime film
     AddShowtimeFilmAdmin = (objectFilm)=>{
@@ -42,7 +43,7 @@ export class AdminService extends baseService{
 
     //---------------USER NORMAL MANAGE -----------
     GetInfoFilmNormal = (userName)=>{
-        return this.get(`api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP15&tuKhoa=${userName}`)
+        return this.get(`api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUP}&tuKhoa=${userName}`)
     }
     UpdateUserInfoNormal = (user)=>{
         return this.put(`api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,user)
@@ -51,10 +52,10 @@ export class AdminService extends baseService{
     //---------------USER ADMIN MANAGE -----------
     FetchUserAdmin = (keyWord="")=>{
         if(keyWord !== ""){
-            return this.get(`/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP15&tuKhoa=${keyWord}`)
+            return this.get(`/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUP}&tuKhoa=${keyWord}`)
         }
         else{
-            return this.get(`/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP15`)
+            return this.get(`/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUP}`)
         }
     }
     FetchTypeUser = ()=>{

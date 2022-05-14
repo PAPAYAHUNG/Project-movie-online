@@ -18,6 +18,7 @@ import { useFormik } from 'formik';
 import moment from 'moment'
 import { AddFilmAdminAction, LoadListFilmAdminAction } from '../../redux/action/AdminAction';
 import { useNavigate } from 'react-router-dom';
+import { GROUP } from '../../redux/types/type-constant';
 
 export default function AddNewFilms() {
     let dispatch = useDispatch()
@@ -40,7 +41,7 @@ export default function AddNewFilms() {
         onSubmit:async values => {
             //   alert(JSON.stringify(values, null, 2));
             console.log({ values })
-            values.maNhom='GP15'
+            values.maNhom=GROUP
             //Create form data object
             let formData = new FormData()
             let tenPhim = formik.values.tenPhim

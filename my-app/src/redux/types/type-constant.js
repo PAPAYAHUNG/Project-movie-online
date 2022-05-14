@@ -1,5 +1,6 @@
 export const ACCESS_TOKEN_MOVIE='ACCESS_TOKEN_MOVIE'
 export const BOOKING_TICKET='BOOKING_TICKET'
+export const GROUP='GP03'
 
 
 export const SET_DATA_BANNER='SET_DATA_BANNER'

@@ -22,3 +22,58 @@ export class baseService {
         return axios.get(`${DOMAIN}/${url}`,{headers:headers})
     }
 }
+// export class baseService {
+//     put = (url,model)=>{
+//         let headers= {'Authorization': 'Bearer '+localStorage.getItem(TOKEN)}
+//         // console.log(headers)
+//         return axios({
+//             method: 'put',
+//             baseURL: DOMAIN,
+//             url: url,
+//             data: {
+//               model: model,
+//             },
+//             headers:headers})
+
+//     }
+//     post = (url,model)=>{
+//         let headers= {'Authorization': 'Bearer '+localStorage.getItem(TOKEN)}
+//         // console.log(headers)
+//         return axios({
+//             method: 'post',
+//             baseURL: DOMAIN,
+//             url: url,
+//             data: {
+//               model: model,
+//             },
+//             headers:headers})
+
+//     }
+//     delete = (url,model)=>{
+//         let headers= {'Authorization': 'Bearer '+localStorage.getItem(TOKEN)}
+//         // console.log(headers)
+//         return axios({
+//             method: 'delete',
+//             baseURL: DOMAIN,
+//             url: url,
+//             data: {
+//               model: model,
+//             },
+//             headers:headers})
+
+//     }
+//     get = (url,model)=>{
+//         let headers= {'Authorization': 'Bearer '+localStorage.getItem(TOKEN)}
+//         // console.log(headers)
+//         return axios({
+//             method: 'get',
+//             baseURL: DOMAIN,
+//             url: url,
+//             data: {
+//               model: model,
+//             },
+//             headers:headers})
+
+//     }
+  
+// }

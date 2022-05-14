@@ -191,8 +191,6 @@ export default function ListFilm() {
             <div className='overlay-all-item'></div>
 
             <div className='list-audience pt-4'>
-             
-                   
                     <h2 style={{ zIndex: 10000, opacity: 1,position:"relative" }} className='text-primary text-center'>Trending</h2>
                     <Slider {...settings}>
 

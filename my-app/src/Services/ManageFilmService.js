@@ -1,3 +1,4 @@
+import { GROUP } from "../redux/types/type-constant"
 import { baseService } from "./BaseServices"
 
 export class ManageFilmSerivce extends baseService {
@@ -9,7 +10,7 @@ export class ManageFilmSerivce extends baseService {
         return this.get('/api/QuanLyPhim/LayDanhSachBanner')
     }
     getbListFilmsService = () => {
-        return this.get('/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP03')
+        return this.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP}`)
     }
     getAllCenima = ()=>{
         return this.get('/api/QuanLyRap/LayThongTinHeThongRap')
@@ -21,7 +22,7 @@ export class ManageFilmSerivce extends baseService {
         return this.get(`api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`)
     }
     getCinemaDetailFilms = () => {
-        return this.get('/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP03')
+        return this.get(`/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${GROUP}`)
     }
     getinFoWhenClicked = (id) => {
         return this.get(`/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`)

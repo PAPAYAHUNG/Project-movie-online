@@ -19,6 +19,7 @@ import moment from 'moment'
 import { getInfoEditFilmAdminAction, UpdateInfoEditFilmAdminAction } from '../../../redux/action/AdminAction';
 import { useParams } from 'react-router-dom';
 import {useNavigate} from 'react-router-dom'
+import { GROUP } from '../../../redux/types/type-constant';
 
 
 export default function Edit() {
@@ -44,7 +45,7 @@ export default function Edit() {
             tenPhim: filmEditInfo.tenPhim,
             trailer: filmEditInfo.trailer,
             moTa: filmEditInfo.moTa,
-            maNhom: 'GP15',
+            maNhom: GROUP,
             ngayKhoiChieu: filmEditInfo.ngayKhoiChieu,
             SapChieu: filmEditInfo.sapChieu,
             DangChieu: filmEditInfo.dangChieu,
